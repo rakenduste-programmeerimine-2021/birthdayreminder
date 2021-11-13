@@ -7,7 +7,7 @@ Anete Vaalu, Anneli Põldaru
 BirthdayReminder on tore app, mis aitab hoida Sinu sõprade jt lähedaste sünnipäevi ühes kohas koos. Ei pea enam muretsema, et unustad sõpra õnnitleda. :)
 
 ## Wireframe e Low Fidelity prototüüp
-TBC
+https://app.uizard.io/p/98598791
 
 ## Funktsionaalsused:
 ### Kõikidele kasutajatele:
