@@ -30,3 +30,31 @@ https://app.uizard.io/p/98598791
 * ExpressJS
 * MongoDB
 * Docker
+
+## Installeerimisjuhis
+1. Lae repositoorium alla
+2. Navigeeri `local-dev` kausta
+3. `docker-compose run --rm --no-deps backend install`
+4. `docker-compose run --rm --no-deps frontend install`
+5. `docker-compose up -d`
+  
+Frontend - http://localhost:3000/  
+Backend- http://localhost:8082/  
+  
+### Sulgemiseks:  
+* `docker-compose stop`
+
+### Mongo DB Compass'iga ühendamiseks:
+1. Ava MongoDB Compass
+2. Kliki "Fill in connection fields individually" ning täida väljad:
+3. Hostname: `localhost`
+4. Port: `27017`
+5. Authentication'iks määra: `Username / Password`
+6. Username: `kasutaja`
+7. Password: `birthday`
+8. Kliki `Connect` nuppu
+> **Märkus:** Ajutiselt on repositooriumi BE osas hetkel ka mõned ajutised failid. Katseta Postmaniga, kas päring läheb läbi ja uus kirje tekib andmebaasi. Kui jah, saad ajutised failid ära kustutada.
+
+Postmaniga ajutiseks katsetamiseks:  
+`POST` päring - localhost:8082/api/item/create
+`GET` päring - localhost:8082/api/item/
