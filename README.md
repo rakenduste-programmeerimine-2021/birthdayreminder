@@ -53,8 +53,3 @@ Backend- http://localhost:8082/
 6. Username: `kasutaja`
 7. Password: `birthday`
 8. Kliki `Connect` nuppu
-> **Märkus:** Ajutiselt on repositooriumi BE osas hetkel ka mõned ajutised failid. Katseta Postmaniga, kas päring läheb läbi ja uus kirje tekib andmebaasi. Kui jah, saad ajutised failid ära kustutada.
-
-Postmaniga ajutiseks katsetamiseks:  
-`POST` päring - localhost:8082/api/item/create
-`GET` päring - localhost:8082/api/item/
