@@ -6,7 +6,7 @@ const { Title } = Typography
 
 function LoginPage(){
     return(
-        <div  style={{ textAlign: 'center' }}>
+        <div style={{ textAlign: 'center' }}>
             <Header />
             <Title style={{ marginTop: '50px' }}>Log in!</Title>
             <LoginForm />
