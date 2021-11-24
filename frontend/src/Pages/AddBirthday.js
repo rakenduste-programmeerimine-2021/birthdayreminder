@@ -1,6 +1,6 @@
 import HeaderLoggedIn from "../Components/HeaderLoggedIn"
 
-function BirthdaysPage(){
+function AddBirthday(){
     return(
         <div style={{ textAlign: 'center' }}>
             <HeaderLoggedIn />
@@ -8,4 +8,4 @@ function BirthdaysPage(){
     )
 }
 
-export default BirthdaysPage
+export default AddBirthday

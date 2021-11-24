@@ -6,6 +6,7 @@ import HomePage from './Pages/HomePage'
 import SignupPage from './Pages/SignupPage'
 import LoginPage from './Pages/LoginPage'
 import BirthdaysPage from './Pages/BirthdaysPage'
+import AddBirthday from './Pages/AddBirthday'
 
 const { Content } = Layout
 
@@ -19,6 +20,7 @@ function App() {
             <Route exact path='/SignupPage' component={SignupPage} />
             <Route exact path='/LoginPage' component={LoginPage} />
             <Route exact path='/Birthdays' component={BirthdaysPage} />
+            <Route exact path='/add-birthday' component={AddBirthday} />
           </Switch>
         </Content>
       </Layout>
