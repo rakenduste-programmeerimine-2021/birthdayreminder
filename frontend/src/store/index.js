@@ -9,8 +9,8 @@ const initialBirthdays = {
 */
 
 const initialAuth = {
-  token: null,
-  user: null
+  token: sessionStorage.getItem('token') || null,
+  user: JSON.parse(sessionStorage.getItem('user')) || null
 }
 
 const [combinedReducer, initialState] = combineReducers({
