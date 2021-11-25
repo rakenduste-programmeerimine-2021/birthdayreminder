@@ -20,6 +20,10 @@ function LoginForm(){
 
         try {
             const response = await axios.post('http://localhost:8082/api/auth/login', userLoginInfo)
+
+            sessionStorage.setItem('token', response.data.token)
+            sessionStorage.setItem('user', JSON.stringify(response.data.user))
+
             dispatch(loginUser(response.data));
             history.push("/Birthdays");
             // console.log(response.data.user.firstName)

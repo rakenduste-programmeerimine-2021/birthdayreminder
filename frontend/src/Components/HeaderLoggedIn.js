@@ -12,6 +12,8 @@ function HeaderLogged(){
 
   const handleLogOut = () => {
     dispatch(logoutUser())
+    sessionStorage.removeItem('token')
+    sessionStorage.removeItem('user')
     notification.success({
       message:'Logged out!'
     })
