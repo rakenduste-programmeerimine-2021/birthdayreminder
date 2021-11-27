@@ -1,12 +1,10 @@
 import { createContext, useReducer } from "react";
-import { /* birthdayReducer, */ authReducer } from "./reducer";
+import { birthdayReducer, authReducer } from "./reducer";
 import combineReducers from "react-combine-reducers"
 
-/*
 const initialBirthdays = {
   data: []
 }
-*/
 
 const initialAuth = {
   token: sessionStorage.getItem('token') || null,
@@ -14,7 +12,7 @@ const initialAuth = {
 }
 
 const [combinedReducer, initialState] = combineReducers({
-  /* birthdays: [birthdayReducer, initialBirthdays], */
+  birthdays: [birthdayReducer, initialBirthdays],
   auth: [authReducer, initialAuth]
 })
 

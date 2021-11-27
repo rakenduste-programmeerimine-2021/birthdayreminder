@@ -1,14 +1,40 @@
-import { Form, Input, Button, DatePicker } from 'antd'
+import { Form, Input, Button, DatePicker, notification } from 'antd'
+import { useContext } from "react";
+import { Context } from "../store";
+import { addBirthday } from '../store/actions'
 
-function AddBirthdayForm(){
-/*
-nii saab kuupäeva kätte: values['form-item-name']
-formaatida saab nt: values['form-item-name'].format('DD-MM-YYYY') 
-*/
+function AddBirthdayForm({ addNewBirthday }){
+    const [ state, dispatch ] = useContext(Context)
+    const [ form ] = Form.useForm()
+
+    const handleAddBirthday = async (values) => {
+        const birthday = values['birthday'].format('DD-MM-YYYY')
+        
+        const newBirthday = {
+            firstName: values.firstname,
+            lastName: values.lastname,
+            email: values.email,
+            birthDay: birthday,
+            createdBy: state.auth.user.id
+        }
+
+        try {
+            await addNewBirthday(newBirthday)
+            notification.success({
+                message: 'New birthday added!'
+            })
+            dispatch(addBirthday(newBirthday))
+            form.resetFields()
+        } catch (error) {
+            notification.error({
+                message: 'Something went wrong...!'
+            })
+        }
+    }
 
     return(
         <div>
-            <Form autoComplete='off' labelCol={{ span: 10 }} wrapperCol={{ span: 5 }}>
+            <Form form={form} autoComplete='off' onFinish={handleAddBirthday} labelCol={{ span: 10 }} wrapperCol={{ span: 5 }}>
                 <Form.Item label='Firstname' name='firstname' rules={[{ required: true, message:'Please insert firstname'}]}>
                     <Input />
                 </Form.Item>
