@@ -1,7 +1,7 @@
 const Birthday = require('../models/Birthday')
 
 exports.addBirthday = async (req, res) => {
-    const { firstName, lastName, email, birthDay, birthMonth, birthYear, createdBy } = req.body
+    const { firstName, lastName, email, birthDay, createdBy } = req.body
 
     try {
         const newBirthday = new Birthday({
@@ -9,8 +9,6 @@ exports.addBirthday = async (req, res) => {
             lastName,
             email,
             birthDay,
-            birthMonth,
-            birthYear,
             createdBy
         })
 

@@ -1,4 +1,4 @@
-import { USER_LOGIN, USER_LOGOUT } from "./actions";
+import { USER_LOGIN, USER_LOGOUT, ADD_BIRTHDAY } from "./actions";
 
 const authReducer = (state, action) => {
   switch(action.type){
@@ -19,4 +19,16 @@ const authReducer = (state, action) => {
   }
 }
 
-export { authReducer }
+const birthdayReducer = (state, action) => {
+  switch(action.type){
+    case ADD_BIRTHDAY:
+      return {
+        ...state,
+        data: state.data.concat(action.payload)
+      }
+    default:
+      return state
+  }
+}
+
+export { authReducer, birthdayReducer }
