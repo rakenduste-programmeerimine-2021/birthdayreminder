@@ -7,6 +7,7 @@ import SignupPage from './Pages/SignupPage'
 import LoginPage from './Pages/LoginPage'
 import BirthdaysPage from './Pages/BirthdaysPage'
 import AddBirthday from './Pages/AddBirthday'
+import ErrorPage from './Pages/ErrorPage'
 
 const { Content } = Layout
 
@@ -21,6 +22,7 @@ function App() {
             <Route exact path='/LoginPage' component={LoginPage} />
             <Route exact path='/Birthdays' component={BirthdaysPage} />
             <Route exact path='/add-birthday' component={AddBirthday} />
+            <Route path='*' component={ErrorPage}/>
           </Switch>
         </Content>
       </Layout>
