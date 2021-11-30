@@ -1,7 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const PORT = process.env.PORT || 3000
-const jwtAuth = require("./middleware/jwtAuth")
 require("dotenv").config()
 
 const authRoutes = require('./routes/auth');
@@ -23,12 +22,6 @@ app.use('/api/bday', bdayRoutes)
 
 app.get('/', (req, res) => {
   res.send('Hello World')
-})
-
-// For jwt auth testing purposes. We'll change it in the near future
-// When we are dealing with "Access to restricted pages denied" issue
-app.get('/secret', jwtAuth, (req, res) => {
-  res.send('Secret Hello World!')
 })
 
 mongoose
