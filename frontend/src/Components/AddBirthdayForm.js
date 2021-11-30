@@ -14,8 +14,7 @@ function AddBirthdayForm({ addNewBirthday }){
             firstName: values.firstname,
             lastName: values.lastname,
             email: values.email,
-            birthDay: birthday,
-            createdBy: state.auth.user.id
+            birthDay: birthday
         }
 
         try {
