@@ -13,6 +13,19 @@ exports.login = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password)
     if (!isMatch) throw Error("Wrong e-mail or password!")
 
+    // Its basically same thing as userTemplate,
+    // But because info inside the token is decoded in the jwt verification process...
+    // I wanted to avoid req.user.user.id usage :)
+    const userInfoIntoToken = {
+      id: user.id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email
+    }
+
+    const token = jwt.sign(userInfoIntoToken, process.env.JWT_SECRET)
+    if (!token) throw Error("Something critical happened 50000")
+
     // Changed it so it would match with FE reducer expectations
     // FE reducer is looking for a response that includes a token and a user object.
     const userTemplate = {
@@ -23,9 +36,6 @@ exports.login = async (req, res) => {
         email
       }
     }
-
-    const token = jwt.sign(userTemplate, process.env.JWT_SECRET)
-    if (!token) throw Error("Something critical happened 50000")
 
     res.status(200).json({
       token,

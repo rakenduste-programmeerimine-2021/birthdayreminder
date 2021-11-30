@@ -10,6 +10,9 @@ const jwtAuth = (req, res, next) => {
     const decoded = jwt.verify(accesToken, process.env.JWT_SECRET)
     req.user = decoded
 
+    // This console.log can be seen in the Docker backend container's log
+    // console.log(req.user)
+
     next()
 
   } catch (e) {
