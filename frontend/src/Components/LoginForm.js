@@ -25,7 +25,7 @@ function LoginForm(){
             sessionStorage.setItem('user', JSON.stringify(response.data.user))
 
             dispatch(loginUser(response.data));
-            history.push("/Birthdays");
+            history.push("/birthdays");
             // console.log(response.data.user.firstName)
             notification.success({
                 message: `Welcome, ${response.data.user.firstName}!`,

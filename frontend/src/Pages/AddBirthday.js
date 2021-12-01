@@ -5,6 +5,7 @@ import { Context } from '../store'
 import HeaderLoggedIn from "../Components/HeaderLoggedIn"
 import AddBirthdayForm from "../Components/AddBirthdayForm"
 import { Typography } from 'antd'
+import { withRouter } from "react-router"
 
 const { Title } = Typography
 
@@ -20,7 +21,7 @@ function AddBirthday(){
             }
         })
         if(res.status === 200){
-            history.push("/Birthdays")
+            history.push("/birthdays")
         }
     }
 
@@ -33,4 +34,4 @@ function AddBirthday(){
     )
 }
 
-export default AddBirthday
+export default withRouter(AddBirthday)

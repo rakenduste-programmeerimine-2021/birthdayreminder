@@ -1,5 +1,6 @@
 import HeaderLogged from "../Components/HeaderLoggedIn"
 import { Typography } from 'antd'
+import { withRouter } from "react-router"
 
 const { Title } = Typography
 
@@ -12,4 +13,4 @@ function UpcomingBirthdays(){
     )
 }
 
-export default UpcomingBirthdays
+export default withRouter(UpcomingBirthdays)

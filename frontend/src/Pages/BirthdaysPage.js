@@ -4,7 +4,7 @@ import { Typography, Button } from 'antd'
 import { useContext } from "react";
 import { Context } from "../store";
 import { useHistory } from 'react-router-dom';
-
+import { withRouter } from "react-router";
 
 const { Title } = Typography
 
@@ -28,4 +28,4 @@ function BirthdaysPage(){
     )
 }
 
-export default BirthdaysPage
+export default withRouter(BirthdaysPage)
