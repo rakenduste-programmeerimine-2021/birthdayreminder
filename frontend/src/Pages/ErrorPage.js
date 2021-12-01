@@ -9,10 +9,8 @@ function ErrorPage(){
 
     const handleRedirect = () => {
         if(state.auth.token) {
-          console.log("Jõudsin siia blokki")
             history.push('/birthdays')
         } else {
-          console.log("Jõudsin ka sinna teise blokki")
           history.push('/')
         }
     }
