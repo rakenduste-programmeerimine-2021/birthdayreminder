@@ -9,9 +9,9 @@ function HomePage(){
             <Title>BirthdayReminder</Title>
             <Paragraph>This page is made for you to remember your friends birthday!</Paragraph>
             <Paragraph>Create an user and start adding birthdays you do not want to forget.</Paragraph>
-            <Button style={{ width: '100px'}} onClick={() => history.push('/SignupPage')}>Sign up</Button>
+            <Button style={{ width: '100px'}} onClick={() => history.push('/signup')}>Sign up</Button>
             <Paragraph>or</Paragraph>
-            <Button style={{ width: '100px'}} onClick={() => history.push('/LoginPage')}>Log in</Button>
+            <Button style={{ width: '100px'}} onClick={() => history.push('/login')}>Log in</Button>
         </div>
     )
 }

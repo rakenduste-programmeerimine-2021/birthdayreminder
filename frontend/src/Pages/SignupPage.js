@@ -11,7 +11,7 @@ function SignupPage(){
     const addNewUserToDB = async (user) => {
         const response = await axios.post('http://localhost:8082/api/auth/signup', user)
         if(response.status === 200) {
-            history.push("/LoginPage");
+            history.push("/login");
         }
     }
 

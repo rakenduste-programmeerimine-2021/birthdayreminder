@@ -23,7 +23,7 @@ function HeaderLogged(){
     <>
       <Menu theme='light' mode='horizontal'>
         <Menu.Item key='home'>
-          <Link to='/Birthdays'><HomeOutlined style={{ width:'50px'}}/></Link>
+          <Link to='/birthdays'><HomeOutlined style={{ width:'50px'}}/></Link>
         </Menu.Item>
         <Menu.Item key='addBirthday' style={{ marginRight: "auto" }}>
           <Link to='/add-birthday'><PlusCircleOutlined style={{ width:'50px'}}/></Link>
