@@ -6,7 +6,7 @@ import { Context } from "../store";
 import { loginUser } from "../store/actions";
 
 function LoginForm(){
-    const [state, dispatch] = useContext(Context);
+    const [ , dispatch ] = useContext(Context);
     const history = useHistory();
     const [form] = Form.useForm();
 

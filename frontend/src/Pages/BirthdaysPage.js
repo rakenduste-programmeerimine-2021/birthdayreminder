@@ -9,7 +9,7 @@ import { withRouter } from "react-router";
 const { Title } = Typography
 
 function BirthdaysPage(){
-    const [ state, dispatch ] = useContext(Context)
+    const [ state, ] = useContext(Context)
     const history = useHistory();
    
     return(

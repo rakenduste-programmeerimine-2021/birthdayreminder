@@ -8,7 +8,7 @@ import { Context } from "../store"
 import { logoutUser } from "../store/actions"
 
 function HeaderLogged(){
-  const [state, dispatch] = useContext(Context)
+  const [ , dispatch ] = useContext(Context)
 
   const handleLogOut = () => {
     dispatch(logoutUser())

@@ -4,7 +4,7 @@ import { Context } from "../store";
 import { addBirthday } from '../store/actions'
 
 function AddBirthdayForm({ addNewBirthday }){
-    const [ state, dispatch ] = useContext(Context)
+    const [ , dispatch ] = useContext(Context)
     const [ form ] = Form.useForm()
 
     const handleAddBirthday = async (values) => {
