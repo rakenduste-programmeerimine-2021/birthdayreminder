@@ -24,6 +24,10 @@ app.get('/', (req, res) => {
   res.send('Hello World')
 })
 
+app.get('*', (req, res) => {
+  res.send('This route does not exist')
+})
+
 mongoose
   .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
