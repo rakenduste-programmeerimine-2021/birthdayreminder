@@ -1,13 +1,19 @@
-# BirthdayReminder
+![Projekti logo](readme_file_pics/logo.png)
 
 ## Autorid:
 Anete Vaalu, Anneli Põldaru
 
+<br />
+
 ## Idee:
 BirthdayReminder on tore app, mis aitab hoida Sinu sõprade jt lähedaste sünnipäevi ühes kohas koos. Ei pea enam muretsema, et unustad sõpra õnnitleda. :)
 
+<br />
+
 ## Wireframe e Low Fidelity prototüüp
 https://app.uizard.io/p/98598791
+
+<br />
 
 ## Funktsionaalsused:
 ### Kõikidele kasutajatele:
@@ -24,12 +30,27 @@ https://app.uizard.io/p/98598791
 * Kasutaja saab emaili peale meeldetuletuse, kui sõbra sünnipäev on kätte jõudnud
 > **Märkus:** Meeldetuletuste emaili teel edastamise kohta peame veel uurima.
 
+<br />
+
+## Rakenduse kuvatõmmised :
+![HomePage](readme_file_pics/homePage.jpg)
+
+<br />
+
 ## Kasutatud tehnoloogiad
 * React
 * JavaScript ja NodeJS
 * ExpressJS
 * MongoDB
 * Docker
+
+<br />
+
+## Logo, favicon jms pildimaterjal pärineb:
+* https://favicon.io/
+* https://pngtree.com/
+
+<br />
 
 ## Installeerimisjuhis
 1. Lae repositoorium alla
