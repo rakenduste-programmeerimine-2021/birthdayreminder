@@ -50,3 +50,13 @@ exports.deleteBirthday = async (req, res) => {
 
     res.status(200).send(birthday._id)
 }
+
+exports.updateBirthday = async (req, res) => {
+    const { id } = req.params
+    const updates = req.body
+    const birthday = await Birthday.findOneAndUpdate({ _id:id }, updates, { new: true })
+
+    if(!birthday) res.status(404).send('This birthday was not found!')
+
+    res.status(200).send(birthday)
+}
