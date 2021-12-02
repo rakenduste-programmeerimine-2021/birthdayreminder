@@ -1,17 +1,23 @@
-import { Typography, Button } from 'antd'
+import { Typography, Button, Image } from 'antd'
 import { useHistory } from 'react-router'
-const { Title, Paragraph } = Typography
+const { Paragraph } = Typography
 
 function HomePage(){
     const history = useHistory()
     return(
-        <div style={{ textAlign: 'center', marginTop: '100px'}}>
-            <Title>BirthdayReminder</Title>
-            <Paragraph>This page is made for you to remember your friends birthday!</Paragraph>
-            <Paragraph>Create an user and start adding birthdays you do not want to forget.</Paragraph>
-            <Button style={{ width: '100px'}} onClick={() => history.push('/signup')}>Sign up</Button>
-            <Paragraph>or</Paragraph>
-            <Button style={{ width: '100px'}} onClick={() => history.push('/login')}>Log in</Button>
+        <div className="mainDiv">
+            <div className="homePageContent">
+                <Image src="./logo.png" preview={false}/>
+                <br />
+                <Paragraph>Do you sometimes forget the birthdays of your loved ones?</Paragraph>
+                <Paragraph>Sign up and you'll never forget them anymore!</Paragraph>
+                <br />
+                <Paragraph>It's easy! Add the birthdays.</Paragraph>
+                <Paragraph>And we'll send you an email notification.</Paragraph>
+                <Button className="homePageBTN" onClick={() => history.push('/signup')}>Sign up</Button>
+                <Paragraph style={{ marginBottom: '0px' }}>or</Paragraph>
+                <Button className="homePageBTN" onClick={() => history.push('/login')}>Log in</Button>
+            </div>
         </div>
     )
 }
