@@ -7,8 +7,14 @@
   place-items: center;
 }
 
+/* 
+  The logic behind were to keep the images and how to use them in js/css files
+  https://stackoverflow.com/questions/57111197/react-path-to-public-folder-in-css-background-image
+  https://github.com/facebook/create-react-app/issues/1248#issuecomment-266313612
+*/
+
 .homePageContent {
-  background-image: url('HomePageIMG.png');
+  background-image: url('./assets/images/HomePageIMG.png');
   background-repeat: no-repeat;
   background-size: contain;
   height: 800px;
@@ -24,7 +30,6 @@
 .homePageBTN {
   width: 100px;
   border-radius: 10px;
-  /* border: groove lightblue 0px; */
 }
 
 @media screen and (max-width: 800px) {
