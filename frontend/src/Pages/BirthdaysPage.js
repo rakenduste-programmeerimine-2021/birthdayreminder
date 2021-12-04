@@ -1,17 +1,35 @@
 import HeaderLoggedIn from "../Components/HeaderLoggedIn"
 import BirthdaysPageTable from "../Components/BirthdaysPageTable";
 import { Typography, Button } from 'antd'
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Context } from "../store";
 import { useHistory } from 'react-router-dom';
 import { withRouter } from "react-router";
+import { updateBirthdays } from '../store/actions'
+import axios from 'axios'
 
 const { Title } = Typography
 
 function BirthdaysPage(){
-    const [ state, ] = useContext(Context)
+    const [ state, dispatch ] = useContext(Context)
     const history = useHistory();
-   
+    const token = state.auth.token
+    
+    const getBirthdays = async () => {
+
+        const response = await axios.get('http://localhost:8082/api/bday/get-birthdays', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        dispatch(updateBirthdays(response.data))
+    }
+
+    useEffect(() => {
+        getBirthdays()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     return(
         <div style={{ textAlign: 'center' }}>
             <HeaderLoggedIn />

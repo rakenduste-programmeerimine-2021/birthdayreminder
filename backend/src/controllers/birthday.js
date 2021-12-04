@@ -30,7 +30,7 @@ exports.addBirthday = async (req, res) => {
 }
 
 exports.getBirthdays = async (req, res) => {
-    const { createdBy } = req.body
+    const createdBy = req.user.id
     const birthdays = await Birthday.find({ createdBy: createdBy})
     
     if(!birthdays){
