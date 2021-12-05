@@ -10,9 +10,9 @@ function AllBirthdaysTable(){
     const [ birthday, setBirthday] = useState([])
 
     let dateToday = new Date()
-    let yearToday = dateToday.getFullYear() //next comments were made 2.12.2021
-    let monthToday = dateToday.getMonth()+1 //+1 because this returns 11 as month nr instead of 12
-    let dayToday = dateToday.getDay()-2 //-2 because this returns 4th dec instead of 2nd dec
+    let yearToday = dateToday.getFullYear() 
+    let monthToday = dateToday.getMonth()+1 //+1 because the return values are 0-11
+    let dayToday = dateToday.getDate()
 
     useEffect(() => {
         calculateAge()
