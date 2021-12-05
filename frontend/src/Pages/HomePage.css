@@ -1,0 +1,48 @@
+.main-grid {
+  text-align: center;
+  height: 100vh;
+  background-image: url('../assets/images/HomePageIMG.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: grid;
+  place-items: center;
+}
+
+.grid-item-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 800px;
+  max-width: 800px;
+}
+
+.app-logo {
+  width: 200px;
+  margin: auto auto;
+}
+
+.redirect-button {
+  width: 100px;
+  border-radius: 10px;
+  margin: auto auto;
+}
+
+@media screen and (min-width: 900px) {
+  .main-grid {
+    background-image: url('../assets/images/HomePageIMG.png');
+    background-size: 900px;
+  }
+}
+
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/@media#logical_operators */
+@media screen and (max-width: 660px), (max-height: 720px) {
+  .main-grid {
+    background-image: none;
+  }
+
+  .grid-item-content {
+    max-width: 90vw;
+    max-height: 90vh;
+  }
+}
