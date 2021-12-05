@@ -13,7 +13,6 @@ function AddBirthdayForm({ addNewBirthday }){
         const newBirthday = {
             firstName: values.firstname,
             lastName: values.lastname,
-            email: values.email,
             birthDay: birthday
         }
 
@@ -38,9 +37,6 @@ function AddBirthdayForm({ addNewBirthday }){
                     <Input />
                 </Form.Item>
                 <Form.Item label='Lastname' name='lastname' rules={[{ required: true, message:'Please insert lastname'}]}>
-                    <Input />
-                </Form.Item>
-                <Form.Item label='E-mail' name='email' rules={[{ type:'email', message:'Please insert correct E-mail'}]}>
                     <Input />
                 </Form.Item>
                 <Form.Item label='Birthday' name='birthday' rules={[{ required: true, message:'Please choose a date'}]}>
