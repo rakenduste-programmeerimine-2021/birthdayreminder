@@ -1,7 +1,7 @@
 const Birthday = require('../models/Birthday')
 
 exports.addBirthday = async (req, res) => {
-    const { firstName, lastName, email, birthDay } = req.body
+    const { firstName, lastName, birthDay } = req.body
     
     // To make a bigger use of the jwt ... I'll take createdBy data from it
     // Actually, jwt has already been verified. And the user info in it has been decoded.
@@ -14,7 +14,6 @@ exports.addBirthday = async (req, res) => {
         const newBirthday = new Birthday({
             firstName,
             lastName,
-            email,
             birthDay,
             createdBy: id
         })

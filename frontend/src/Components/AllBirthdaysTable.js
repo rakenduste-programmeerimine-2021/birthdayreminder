@@ -64,11 +64,6 @@ function AllBirthdaysTable(){
             key: 'age'
         },
         {
-            title: 'Email',
-            dataIndex: 'email',
-            key: 'email'
-        },
-        {
             title: 'Delete',
             render: (e) => (
                 <DeleteOutlined />
