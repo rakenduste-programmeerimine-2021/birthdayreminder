@@ -28,13 +28,6 @@
   margin: auto auto;
 }
 
-@media screen and (min-width: 900px) {
-  .main-grid {
-    background-image: url('../assets/images/HomePageIMG.png');
-    background-size: 900px;
-  }
-}
-
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/@media#logical_operators */
 @media screen and (max-width: 660px), (max-height: 720px) {
   .main-grid {
