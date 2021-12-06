@@ -1,7 +1,7 @@
 import HeaderLoggedIn from "../Components/HeaderLoggedIn"
 import BirthdaysPageTable from "../Components/BirthdaysPageTable";
 import { Typography, Button } from 'antd'
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Context } from "../store";
 import { useHistory } from 'react-router-dom';
 import { withRouter } from "react-router";
@@ -12,8 +12,13 @@ const { Title } = Typography
 
 function BirthdaysPage(){
     const [ state, dispatch ] = useContext(Context)
+    const [ isLoading, setIsLoading ] = useState(true)
     const history = useHistory();
     const token = state.auth.token
+    let dateToday = new Date()
+    let yearToday = dateToday.getFullYear() 
+    let monthToday = dateToday.getMonth()+1 //+1 because the return values are 0-11
+    let dayToday = dateToday.getDate()
     
     const getBirthdays = async () => {
 
@@ -22,13 +27,36 @@ function BirthdaysPage(){
                 'Authorization': `Bearer ${token}`
             }
         })
-        dispatch(updateBirthdays(response.data))
+
+        let Allbirthdays = response.data
+        let fullDate
+        Allbirthdays.forEach(element => {
+            let day, month, year, age
+            fullDate = element.birthDay.split('-')
+            day = parseInt(fullDate[0])
+            month = parseInt(fullDate[1])
+            year = parseInt(fullDate[2])
+            age = yearToday - year
+            if(month >= monthToday){
+                if(day > dayToday){
+                    age -=1
+                }
+            }
+            element['age'] = age
+        })
+        dispatch(updateBirthdays(Allbirthdays))
+        setIsLoading(false)
     }
 
     useEffect(() => {
         getBirthdays()
+        
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    if(isLoading){
+        return(<div>Loading...</div>)
+    }
 
     return(
         <div style={{ textAlign: 'center' }}>
