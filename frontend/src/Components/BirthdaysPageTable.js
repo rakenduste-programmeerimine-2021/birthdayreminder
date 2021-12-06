@@ -1,5 +1,5 @@
 import { Table } from 'antd'
-import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
+import { EditOutlined } from '@ant-design/icons'
 import { useContext, useState, useEffect } from 'react'
 import { Context } from '../store'
 
@@ -47,12 +47,6 @@ function BirthdaysPageTable(){
             title: 'Age',
             dataIndex: 'age',
             key: 'age'
-        },
-        {
-            title: 'Delete',
-            render: (e) => (
-                <DeleteOutlined />
-            )
         },
         {
             title: 'Edit',
