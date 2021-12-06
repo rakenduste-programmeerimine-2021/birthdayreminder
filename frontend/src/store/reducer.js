@@ -1,4 +1,4 @@
-import { USER_LOGIN, USER_LOGOUT, ADD_BIRTHDAY, UPDATE_BIRTHDAYS } from "./actions";
+import { USER_LOGIN, USER_LOGOUT, ADD_BIRTHDAY, UPDATE_BIRTHDAYS, DELETE_BIRTHDAY } from "./actions";
 
 const authReducer = (state, action) => {
   switch(action.type){
@@ -30,6 +30,11 @@ const birthdayReducer = (state, action) => {
       return {
         ...state,
         data: action.payload
+      }
+    case DELETE_BIRTHDAY:
+      return {
+        ...state,
+        data: state.data.filter(birthday => birthday._id !== action.payload)
       }
     default:
       return state
