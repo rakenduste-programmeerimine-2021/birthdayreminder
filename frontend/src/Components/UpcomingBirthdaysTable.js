@@ -1,5 +1,5 @@
 import { Table } from 'antd'
-import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
+import { EditOutlined } from '@ant-design/icons'
 import { useContext, useEffect, useState } from 'react'
 import { Context } from '../store'
 
@@ -54,12 +54,6 @@ function UpcomingBirthdaysTable(){
             title: 'Age',
             dataIndex: 'age',
             key: 'age'
-        },
-        {
-            title: 'Delete',
-            render: (e) => (
-                <DeleteOutlined />
-            )
         },
         {
             title: 'Edit',
