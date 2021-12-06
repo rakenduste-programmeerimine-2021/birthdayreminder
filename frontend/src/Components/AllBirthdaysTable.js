@@ -1,11 +1,15 @@
 import { Table } from 'antd'
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
+import { Popconfirm, notification } from 'antd'
 import { withRouter } from "react-router"
 import { useContext } from 'react'
 import { Context } from '../store'
+import axios from 'axios'
+import { deleteBirthday } from '../store/actions'
 
 function AllBirthdaysTable(){
-    const [ state, ] = useContext(Context)
+    const [ state, dispatch ] = useContext(Context)
+    const token = state.auth.token
 
     const columns = [
         {
@@ -31,7 +35,12 @@ function AllBirthdaysTable(){
         {
             title: 'Delete',
             render: (e) => (
-                <DeleteOutlined />
+                <Popconfirm
+                    title='Are you sure?'
+                    onConfirm={() => handleDelete(e._id)}
+                    >
+                    <DeleteOutlined style={{ color:'red', cursor:'pointer' }} />
+                </Popconfirm>
             )
         },
         {
@@ -42,6 +51,15 @@ function AllBirthdaysTable(){
         }
     ]
 
+    const handleDelete = async (id) => {
+        const response = await axios.delete(`http://localhost:8082/api/bday/delete-birthday/${id}`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })  
+        notification.success({ message: 'Birthday deleted!'})
+        dispatch(deleteBirthday(response.data)) 
+    }
 
     return(
         <>
