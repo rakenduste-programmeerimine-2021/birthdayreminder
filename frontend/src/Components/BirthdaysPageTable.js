@@ -2,6 +2,7 @@ import { Table } from 'antd'
 import { EditOutlined } from '@ant-design/icons'
 import { useContext, useState, useEffect } from 'react'
 import { Context } from '../store'
+import './BirthdaysPageTable.css'
 
 function BirthdaysPageTable(){
    const [ state, ] = useContext(Context)
@@ -36,22 +37,30 @@ function BirthdaysPageTable(){
         {
             title: 'Firstname',
             dataIndex: 'firstName',
-            key: 'firstName'
+            key: 'firstName',
+            sorter:(record1, record2) => {
+                return record1.firstName > record2.firstName
+            }
         },
         {
             title: 'Lastname',
             dataIndex: 'lastName',
-            key: 'lastName'
+            key: 'lastName',
+            sorter:(record1, record2) => {
+                return record1.firstName > record2.firstName
+            }
         },
         {
             title: 'Age',
             dataIndex: 'age',
-            key: 'age'
+            key: 'age',
+            width: 50,
         },
         {
             title: 'Edit',
+            width: 50,
             render: (e) => (
-                <EditOutlined />
+                <EditOutlined className='edit-button' />
             )
         }
     ]
@@ -60,10 +69,14 @@ function BirthdaysPageTable(){
     return(
         <>
             <Table
-                style={{ width:'90vw', marginLeft: '5vw', marginRight:'5vw'}}
+                className='todays-birthdays-table'
                 columns={columns}
                 rowKey='_id'
                 dataSource={todaysBirthdays}
+                bordered
+                pagination={false} 
+                showSorterTooltip={false}
+                size="middle"
             />
         </>
     )

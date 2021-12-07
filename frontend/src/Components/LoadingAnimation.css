@@ -2,7 +2,7 @@
   width: 100vw;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 35px;
 }
 
 .lds-default {
@@ -18,8 +18,8 @@
   height: 6px;
   
   /* I used #596886 colour in my 4th homework. And App's logo has #013dc4 colour*/
-  /* background: linear-gradient(#596886, lightblue); */
-  background: linear-gradient(#013dc4, lightblue);
+  background: linear-gradient(#596886, lightblue);
+  /* background: linear-gradient(#013dc4, lightblue); */
   
   border-radius: 50%;
   animation: lds-default 1.2s linear infinite;
