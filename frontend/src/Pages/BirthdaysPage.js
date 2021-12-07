@@ -1,5 +1,6 @@
 import HeaderLoggedIn from "../Components/HeaderLoggedIn"
 import BirthdaysPageTable from "../Components/BirthdaysPageTable";
+import LoadingAnimation from "../Components/LoadingAnimation";
 import { Typography, Button } from 'antd'
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../store";
@@ -7,6 +8,7 @@ import { useHistory } from 'react-router-dom';
 import { withRouter } from "react-router";
 import { updateBirthdays } from '../store/actions'
 import axios from 'axios'
+import './BirthdaysPage.css'
 
 const { Title } = Typography
 
@@ -54,23 +56,22 @@ function BirthdaysPage(){
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    if(isLoading){
-        return(<div>Loading...</div>)
-    }
 
     return(
-        <div style={{ textAlign: 'center' }}>
+        <>
             <HeaderLoggedIn />
-            <Title style={{ margin: '50px' }}>Hello, { state.auth.user.firstName }!</Title>
-            <div style={{ margin: '20px'}}>
-                <Button style={{ margin: '15px'}} onClick={() => history.push('/add-birthday')}>Add a birthday</Button>
-                <Button style={{ margin: '15px'}} onClick={() => history.push('/upcoming')}>Upcoming birthdays</Button>
-                <Button style={{ margin: '15px'}} onClick={() => history.push('/all-birthdays')}>All Birthdays</Button>
+            <div className='main-content'>
+                <Title level={2} className='title-style'>Hello, { state.auth.user.firstName }!</Title>
+                <div className='button-container'>
+                    <Button onClick={() => history.push('/add-birthday')}>Add a birthday</Button>
+                    <Button onClick={() => history.push('/upcoming')}>Upcoming birthdays</Button>
+                    <Button onClick={() => history.push('/all-birthdays')}>All Birthdays</Button>
+                </div>
+                <br/>
+                <Title level={4}>Todays birthdays:</Title>
+                { isLoading ? <LoadingAnimation /> : <BirthdaysPageTable /> }
             </div>
-            <br/>
-            <Title level={4}>Todays birthdays:</Title>
-            <BirthdaysPageTable />
-        </div>
+        </>
     )
 }
 

@@ -1,0 +1,21 @@
+.todays-birthdays-table {
+  width: 70vw;
+  max-width: 800px;
+  /* margin: auto auto; */
+}
+
+.todays-birthdays-table tr th {
+  background-color: #596886 !important;
+  color: #fff;
+}
+
+.edit-button {
+  color: #013dc4;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .todays-birthdays-table {
+    width: 100vw;
+  }
+}
