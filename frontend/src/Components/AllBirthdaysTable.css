@@ -1,0 +1,25 @@
+.all-birthdays-table {
+  width: 70vw;
+  max-width: 800px;
+}
+
+.all-birthdays-table tr th {
+  background-color: #596886 !important;
+  color: #fff;
+}
+
+.edit-button {
+  color: #013dc4;
+  cursor: pointer;
+}
+
+.delete-button {
+  color: red;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .all-birthdays-table {
+    width: 100vw;
+  }
+}
