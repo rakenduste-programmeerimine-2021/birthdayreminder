@@ -2,6 +2,7 @@ import { Table } from 'antd'
 import { EditOutlined } from '@ant-design/icons'
 import { useContext, useEffect, useState } from 'react'
 import { Context } from '../store'
+import './UpcomingBirthdaysTable.css'
 
 function UpcomingBirthdaysTable(){
     const [ state, ] = useContext(Context)
@@ -38,27 +39,40 @@ function UpcomingBirthdaysTable(){
         {
             title: 'Firstname',
             dataIndex: 'firstName',
-            key: 'firstName'
+            key: 'firstName',
+            fixed: true,
+            sorter:(record1, record2) => {
+                return record1.firstName > record2.firstName
+            }
         },
         {
             title: 'Lastname',
             dataIndex: 'lastName',
-            key: 'lastName'
+            key: 'lastName',
+            sorter:(record1, record2) => {
+                return record1.firstName > record2.firstName
+            }
         },
         {
             title: 'Birthday',
             dataIndex: 'birthDay',
-            key: 'birthDay'
+            key: 'birthDay',
+            sorter:(record1, record2) => {
+                return record1.firstName > record2.firstName
+            }
         },
         {
             title: 'Age',
             dataIndex: 'age',
-            key: 'age'
+            key: 'age',
+            width: 50,
         },
         {
             title: 'Edit',
+            width: 50,
+            fixed: 'right',
             render: (e) => (
-                <EditOutlined />
+                <EditOutlined className='edit-button' />
             )
         }
     ]
@@ -67,10 +81,15 @@ function UpcomingBirthdaysTable(){
     return(
         <>
             <Table
-                style={{ width:'90vw', marginLeft: '5vw', marginRight:'5vw'}}
+                className='upcoming-birthdays-table'
                 columns={columns}
                 rowKey='_id'
                 dataSource={upcomingBdays}
+                scroll={{ x: 350 }}
+                bordered
+                pagination={false} 
+                showSorterTooltip={false}
+                size="middle"
             />
         </>
     )
