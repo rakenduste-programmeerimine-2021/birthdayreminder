@@ -18,7 +18,7 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 720px) {
   .all-birthdays-table {
     width: 100vw;
   }

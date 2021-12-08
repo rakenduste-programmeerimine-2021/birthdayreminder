@@ -41,8 +41,9 @@ function UpcomingBirthdaysTable(){
             dataIndex: 'firstName',
             key: 'firstName',
             fixed: true,
+            // https://stackoverflow.com/questions/55808128/how-to-sort-a-table-in-alphabetical-order-with-antd
             sorter:(record1, record2) => {
-                return record1.firstName > record2.firstName
+                return record1.firstName.localeCompare(record2.firstName);
             }
         },
         {
@@ -50,16 +51,13 @@ function UpcomingBirthdaysTable(){
             dataIndex: 'lastName',
             key: 'lastName',
             sorter:(record1, record2) => {
-                return record1.firstName > record2.firstName
+                return record1.lastName.localeCompare(record2.lastName);
             }
         },
         {
             title: 'Birthday',
             dataIndex: 'birthDay',
             key: 'birthDay',
-            sorter:(record1, record2) => {
-                return record1.firstName > record2.firstName
-            }
         },
         {
             title: 'Age',
@@ -85,7 +83,7 @@ function UpcomingBirthdaysTable(){
                 columns={columns}
                 rowKey='_id'
                 dataSource={upcomingBdays}
-                scroll={{ x: 350 }}
+                scroll={{ x: 450 }}
                 bordered
                 pagination={false} 
                 showSorterTooltip={false}
