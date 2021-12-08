@@ -17,7 +17,7 @@ function ErrorPage(){
     }
 
     return(
-        <div className='main-content'>
+        <div className='error-page-main-content'>
             <Result 
               status="info"
               title='404 Page not Found'
