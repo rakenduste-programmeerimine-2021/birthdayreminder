@@ -38,8 +38,9 @@ function BirthdaysPageTable(){
             title: 'Firstname',
             dataIndex: 'firstName',
             key: 'firstName',
+            // https://stackoverflow.com/questions/55808128/how-to-sort-a-table-in-alphabetical-order-with-antd
             sorter:(record1, record2) => {
-                return record1.firstName > record2.firstName
+                return record1.firstName.localeCompare(record2.firstName);
             }
         },
         {
@@ -47,7 +48,7 @@ function BirthdaysPageTable(){
             dataIndex: 'lastName',
             key: 'lastName',
             sorter:(record1, record2) => {
-                return record1.firstName > record2.firstName
+                return record1.lastName.localeCompare(record2.lastName);
             }
         },
         {
