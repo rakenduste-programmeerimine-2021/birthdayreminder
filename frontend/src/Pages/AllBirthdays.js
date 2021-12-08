@@ -2,16 +2,19 @@ import HeaderLoggedIn from "../Components/HeaderLoggedIn"
 import { Typography } from 'antd'
 import { withRouter } from "react-router"
 import AllBirthdaysTable from "../Components/AllBirthdaysTable"
+import './AllBirthdays.css'
 
 const { Title } = Typography
 
 function AllBirthdays(){
     return(
-        <div style={{ textAlign: 'center'}}>
+        <>
             <HeaderLoggedIn />
-            <Title style={{ margin: '50px' }}>All birthdays</Title>
-            <AllBirthdaysTable />
-        </div>
+            <div className='main-content'>
+                <Title level={2} className='title-style'>All birthdays</Title>
+                <AllBirthdaysTable />
+            </div>
+        </>
     )
 }
 

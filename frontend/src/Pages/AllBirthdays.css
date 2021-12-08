@@ -1,0 +1,13 @@
+.main-content {
+  text-align: center;
+}
+
+.title-style {
+  margin: 50px
+}
+
+@media screen and (max-width: 600px) {
+  .title-style {
+    margin: 30px 15px 10px 15px
+  }
+}

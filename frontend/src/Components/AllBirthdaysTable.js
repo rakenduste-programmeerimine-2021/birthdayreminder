@@ -6,6 +6,7 @@ import { useContext } from 'react'
 import { Context } from '../store'
 import axios from 'axios'
 import { deleteBirthday } from '../store/actions'
+import './AllBirthdaysTable.css'
 
 function AllBirthdaysTable(){
     const [ state, dispatch ] = useContext(Context)
@@ -15,38 +16,50 @@ function AllBirthdaysTable(){
         {
             title: 'Firstname',
             dataIndex: 'firstName',
-            key: 'firstName'
+            key: 'firstName',
+            fixed: true,
+            // https://stackoverflow.com/questions/55808128/how-to-sort-a-table-in-alphabetical-order-with-antd
+            sorter:(record1, record2) => {
+                return record1.firstName.localeCompare(record2.firstName);
+            }
         },
         {
             title: 'Lastname',
             dataIndex: 'lastName',
-            key: 'lastName'
+            key: 'lastName',
+            sorter:(record1, record2) => {
+                return record1.lastName.localeCompare(record2.lastName);
+            }
         },
         {
             title: 'Birthday',
             dataIndex: 'birthDay',
-            key: 'birthDay'
+            key: 'birthDay',
         },
         {
             title: 'Age',
             dataIndex: 'age',
-            key: 'age'
+            key: 'age',
+            width: 50,
         },
         {
             title: 'Delete',
+            width: 60,
             render: (e) => (
                 <Popconfirm
                     title='Are you sure?'
                     onConfirm={() => handleDelete(e._id)}
                     >
-                    <DeleteOutlined style={{ color:'red', cursor:'pointer' }} />
+                    <DeleteOutlined className='delete-button' />
                 </Popconfirm>
             )
         },
         {
             title: 'Edit',
+            width: 50,
+            fixed: 'right',
             render: (e) => (
-                <EditOutlined />
+                <EditOutlined className='edit-button' />
             )
         }
     ]
@@ -64,10 +77,14 @@ function AllBirthdaysTable(){
     return(
         <>
             <Table
-                style={{ width:'90vw', marginLeft: '5vw', marginRight:'5vw'}}
+                className='all-birthdays-table'
                 columns={columns}
                 rowKey='_id'
                 dataSource={state.birthdays.data}
+                scroll={{ x: 500 }}
+                bordered
+                showSorterTooltip={false}
+                size="middle"
             />
         </>
     )
