@@ -2,6 +2,7 @@ import { Button, Result } from 'antd'
 import { useHistory } from 'react-router'
 import { useContext } from 'react'
 import { Context } from '../store'
+import './ErrorPage.css'
 
 function ErrorPage(){
     const history = useHistory()
@@ -16,14 +17,14 @@ function ErrorPage(){
     }
 
     return(
-        <div style={{ textAlign: 'center', marginTop: '100px'}}>
+        <div className='main-content'>
             <Result 
               status="info"
               title='404 Page not Found'
               subTitle="We're sorry, this page you requested could not be found!"
               extra={
                 <Button 
-                  style={{ width: '100px'}} 
+                  className='back-home-button'
                   onClick={handleRedirect}>Back Home
                 </Button>
               }
