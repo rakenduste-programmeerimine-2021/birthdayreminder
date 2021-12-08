@@ -1,5 +1,4 @@
 import { Table } from 'antd'
-import { EditOutlined } from '@ant-design/icons'
 import { useContext, useState, useEffect } from 'react'
 import { Context } from '../store'
 import './BirthdaysPageTable.css'
@@ -57,13 +56,6 @@ function BirthdaysPageTable(){
             key: 'age',
             width: 50,
         },
-        {
-            title: 'Edit',
-            width: 50,
-            render: (e) => (
-                <EditOutlined className='edit-button' />
-            )
-        }
     ]
 
 

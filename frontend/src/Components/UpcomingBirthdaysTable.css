@@ -8,11 +8,6 @@
   color: #fff;
 }
 
-.edit-button {
-  color: #013dc4;
-  cursor: pointer;
-}
-
 @media screen and (max-width: 600px) {
   .upcoming-birthdays-table {
     width: 100vw;

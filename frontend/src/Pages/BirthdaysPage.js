@@ -65,7 +65,7 @@ function BirthdaysPage(){
                 <div className='button-container'>
                     <Button onClick={() => history.push('/add-birthday')}>Add a birthday</Button>
                     <Button onClick={() => history.push('/upcoming')}>Upcoming birthdays</Button>
-                    <Button onClick={() => history.push('/all-birthdays')}>All Birthdays</Button>
+                    <Button onClick={() => history.push('/all-birthdays')}>Edit birthdays</Button>
                 </div>
                 <br/>
                 <Title level={4}>Todays birthdays:</Title>
