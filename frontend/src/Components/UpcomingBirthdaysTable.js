@@ -1,5 +1,4 @@
 import { Table } from 'antd'
-import { EditOutlined } from '@ant-design/icons'
 import { useContext, useEffect, useState } from 'react'
 import { Context } from '../store'
 import './UpcomingBirthdaysTable.css'
@@ -64,15 +63,9 @@ function UpcomingBirthdaysTable(){
             dataIndex: 'age',
             key: 'age',
             width: 50,
+            // I commented it out...so we can test if this version is better
+            // fixed: 'right',
         },
-        {
-            title: 'Edit',
-            width: 50,
-            fixed: 'right',
-            render: (e) => (
-                <EditOutlined className='edit-button' />
-            )
-        }
     ]
 
 
