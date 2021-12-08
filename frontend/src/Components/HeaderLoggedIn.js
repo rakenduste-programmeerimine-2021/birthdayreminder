@@ -6,8 +6,9 @@ import { Link } from 'react-router-dom'
 import { useContext } from "react"
 import { Context } from "../store"
 import { logoutUser } from "../store/actions"
+import './HeaderLoggedIn.css'
 
-function HeaderLogged(){
+function HeaderLoggedIn(){
   const [ , dispatch ] = useContext(Context)
 
   const handleLogOut = () => {
@@ -21,21 +22,29 @@ function HeaderLogged(){
 
   return(
     <>
-      <Menu theme='light' mode='horizontal'>
-        <Menu.Item key='home'>
-          <Link to='/birthdays'><HomeOutlined style={{ width:'50px'}}/></Link>
-        </Menu.Item>
-        <Menu.Item key='addBirthday' style={{ marginRight: "auto" }}>
-          <Link to='/add-birthday'><PlusCircleOutlined style={{ width:'50px'}}/></Link>
-        </Menu.Item>
-        <Menu.Item key='logout' style={{ width:'120px', textAlign: 'center'}}>
-          <Link to='/' 
-            onClick={handleLogOut}>Log out <LogoutOutlined/>
-          </Link>
-        </Menu.Item>
-      </Menu>
+      <div className='header-menu-container'>
+        <Menu theme='light' mode='horizontal' className='header-menu-content'>
+            <Menu.Item key='home'>
+              <Link to='/birthdays'>
+                <HomeOutlined className='header-menu-icon'/>
+              </Link>
+            </Menu.Item>
+
+            <Menu.Item key='addBirthday' className='header-menu-item-on-left'>
+              <Link to='/add-birthday'>
+                <PlusCircleOutlined className='header-menu-icon'/>
+              </Link>
+            </Menu.Item>
+
+            <Menu.Item key='logout' className='header-menu-item'>
+              <Link to='/' onClick={handleLogOut}>
+                Log out <LogoutOutlined/>
+              </Link>
+            </Menu.Item>
+        </Menu>
+      </div>
     </>
   )
 }
 
-export default HeaderLogged
+export default HeaderLoggedIn
