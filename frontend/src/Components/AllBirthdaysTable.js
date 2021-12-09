@@ -64,7 +64,42 @@ function AllBirthdaysTable(){
             key: 'lastName',
             sorter:(record1, record2) => {
                 return record1.lastName.localeCompare(record2.lastName);
-            }
+            },
+
+            // Inspired by: https://www.youtube.com/watch?v=uatpXRlR4zo
+            filterDropdown: ({setSelectedKeys, selectedKeys, confirm, clearFilters}) => {
+                return(
+                    <>
+                        <Input 
+                            autoFocus
+                            placeholder='Search...'
+                            value={selectedKeys[0]}
+                            onChange={(e) => {
+                                setSelectedKeys(e.target.value?[e.target.value]:[])
+                                confirm({closeDropdown: false}) // It'll search and show the results while you type
+                            }}
+                            onPressEnter={() => {confirm()}}
+                            onBlur={() => {confirm()}}
+                            className='all-birthdays-search-field'
+                        />
+                        <div>
+                            <Button onClick={() => {confirm()}}>
+                                <SearchOutlined className='search-button'/>
+                            </Button>
+                            <Button onClick={() => {clearFilters()}}>
+                                <CloseOutlined className='clear-button'/>
+                            </Button>
+                        </div>
+                    </>
+                )
+            },
+            filterIcon: () => {
+                return(<SearchOutlined />)
+            },
+            onFilter:(value, record) => {
+                return(record.lastName.toLowerCase().includes(value.toLowerCase()))
+            },
+
         },
         {
             title: 'Birthday',
@@ -76,10 +111,12 @@ function AllBirthdaysTable(){
             dataIndex: 'age',
             key: 'age',
             width: 50,
+            align: 'center',
         },
         {
             title: 'Delete',
             width: 60,
+            align: 'center',
             render: (e) => (
                 <Popconfirm
                     title='Are you sure?'
@@ -93,6 +130,7 @@ function AllBirthdaysTable(){
             title: 'Edit',
             width: 50,
             fixed: 'right',
+            align: 'center',
             render: (e) => (
                 <EditOutlined className='edit-button' />
             )
