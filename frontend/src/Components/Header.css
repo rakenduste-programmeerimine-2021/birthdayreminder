@@ -1,0 +1,10 @@
+.not-logged-header-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.birthday-app-logo {
+  margin-top: 15px;
+  width: 200px;
+}
