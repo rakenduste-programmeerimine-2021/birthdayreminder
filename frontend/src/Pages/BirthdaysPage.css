@@ -8,29 +8,8 @@
   margin: 50px
 }
 
-.button-container {
-  margin: 20px;
-}
-
-.button-container>Button {
-  margin: 10px;
-  border-radius: 10px;
-}
-
 @media screen and (max-width: 600px) {
   .title-style {
     margin: 20px
-  }
-
-  .button-container {
-    margin: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .button-container>Button {
-    margin: 5px;
-    width: 170px;
   }
 }
