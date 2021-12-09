@@ -1,10 +1,9 @@
 import HeaderLoggedIn from "../Components/HeaderLoggedIn"
 import BirthdaysPageTable from "../Components/BirthdaysPageTable";
 import LoadingAnimation from "../Components/LoadingAnimation";
-import { Typography, Button } from 'antd'
+import { Typography } from 'antd'
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../store";
-import { useHistory } from 'react-router-dom';
 import { withRouter } from "react-router";
 import { updateBirthdays } from '../store/actions'
 import axios from 'axios'
@@ -15,7 +14,6 @@ const { Title } = Typography
 function BirthdaysPage(){
     const [ state, dispatch ] = useContext(Context)
     const [ isLoading, setIsLoading ] = useState(true)
-    const history = useHistory();
     const token = state.auth.token
     let dateToday = new Date()
     let yearToday = dateToday.getFullYear() 
