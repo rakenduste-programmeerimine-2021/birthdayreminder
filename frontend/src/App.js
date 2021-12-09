@@ -21,7 +21,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Layout style={{ height: '100vh'}}>
+      <Layout style={{ minHeight: '100vh'}}>
         <Content>
           <Switch>
             <Route exact path='/' component={HomePage}/>
