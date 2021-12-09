@@ -2,7 +2,7 @@ import HeaderLoggedIn from "../Components/HeaderLoggedIn"
 import { Typography } from 'antd'
 import { withRouter } from "react-router"
 import AllBirthdaysTable from "../Components/AllBirthdaysTable"
-import './StyleForBirthdayPages.css'
+import './BirthdaysPage.css'
 
 const { Title } = Typography
 
