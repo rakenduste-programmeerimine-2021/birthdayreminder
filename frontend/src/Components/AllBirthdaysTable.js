@@ -1,5 +1,5 @@
-import { Table } from 'antd'
-import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
+import { Button, Input, Table } from 'antd'
+import { DeleteOutlined, EditOutlined, SearchOutlined, CloseOutlined } from '@ant-design/icons'
 import { Popconfirm, notification } from 'antd'
 import { withRouter } from "react-router"
 import { useContext } from 'react'
@@ -21,7 +21,42 @@ function AllBirthdaysTable(){
             // https://stackoverflow.com/questions/55808128/how-to-sort-a-table-in-alphabetical-order-with-antd
             sorter:(record1, record2) => {
                 return record1.firstName.localeCompare(record2.firstName);
-            }
+            },
+
+            // Inspired by: https://www.youtube.com/watch?v=uatpXRlR4zo
+            filterDropdown: ({setSelectedKeys, selectedKeys, confirm, clearFilters}) => {
+                return(
+                    <>
+                        <Input 
+                            autoFocus
+                            placeholder='Search...'
+                            value={selectedKeys[0]}
+                            onChange={(e) => {
+                                setSelectedKeys(e.target.value?[e.target.value]:[])
+                                confirm({closeDropdown: false}) // It'll search and show the results while you type
+                            }}
+                            onPressEnter={() => {confirm()}}
+                            onBlur={() => {confirm()}}
+                            className='all-birthdays-search-field'
+                        />
+                        <div>
+                            <Button onClick={() => {confirm()}}>
+                                <SearchOutlined className='search-button'/>
+                            </Button>
+                            <Button onClick={() => {clearFilters()}}>
+                                <CloseOutlined className='clear-button'/>
+                            </Button>
+                        </div>
+                    </>
+                )
+            },
+            filterIcon: () => {
+                return(<SearchOutlined />)
+            },
+            onFilter:(value, record) => {
+                return(record.firstName.toLowerCase().includes(value.toLowerCase()))
+            },
+
         },
         {
             title: 'Lastname',
