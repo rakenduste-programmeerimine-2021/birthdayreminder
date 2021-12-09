@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 import { withRouter } from "react-router";
 import { updateBirthdays } from '../store/actions'
 import axios from 'axios'
-import './BirthdaysPage.css'
+import './StyleForBirthdayPages.css'
 
 const { Title } = Typography
 
