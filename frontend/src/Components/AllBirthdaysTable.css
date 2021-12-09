@@ -18,6 +18,18 @@
   cursor: pointer;
 }
 
+.all-birthdays-search-field {
+  width: 120px;
+}
+
+.search-button {
+  width: 28px;
+}
+
+.clear-button {
+  width: 28px;
+}
+
 @media screen and (max-width: 720px) {
   .all-birthdays-table {
     width: 100vw;
