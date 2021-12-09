@@ -61,8 +61,7 @@ function BirthdaysPage(){
         <>
             <HeaderLoggedIn />
             <div className='main-content'>
-                <Title level={2} className='title-style'>Hello, { state.auth.user.firstName }!</Title>
-                <Title level={4}>Todays birthdays:</Title>
+                <Title level={2} className='title-style'>Todays birthdays:</Title>
                 { isLoading ? <LoadingAnimation /> : <BirthdaysPageTable /> }
             </div>
         </>
