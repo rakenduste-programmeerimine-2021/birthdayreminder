@@ -1,30 +1,37 @@
-.header-menu-container {
-  width: 100vw;
+.logo-menu-bar {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #fff;
 }
 
-.header-menu-content {
-  width: 70vw;
-  max-width: 800px;
+.app-logo-on-the-header {
+  width: 200px;
+  margin-top: 15px;
 }
 
-.header-menu-icon {
-  width: 20px
+.lower-menu-buttons-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  width: 100%;
 }
 
-.header-menu-item {
-  width: 110px;
-  text-align: center;
+.shown-on-smaller-screens {
+  display: none;
 }
 
-.header-menu-item-on-left {
-  margin-right: auto;
+.shown-on-bigger-screens {
+  display: inline-block;
 }
 
 @media screen and (max-width: 600px) {
-  .header-menu-content {
-    width: 100vw;
+  .shown-on-bigger-screens {
+    display: none;
+  }
+
+  .shown-on-smaller-screens {
+    display: inline-block;
   }
 }
