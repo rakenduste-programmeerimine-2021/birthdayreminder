@@ -8,10 +8,10 @@ exports.login = async (req, res) => {
   try {
     const user = await User.findOne({ email })
 
-    if (!user) throw Error("User with this e-mail does not exist")
+    if (!user) throw Error("User with this email does not exist")
 
     const isMatch = await bcrypt.compare(password, user.password)
-    if (!isMatch) throw Error("Wrong e-mail or password!")
+    if (!isMatch) throw Error("Wrong email or password!")
 
     // Its basically same thing as userTemplate,
     // But because info inside the token is decoded in the jwt verification process...
@@ -53,7 +53,7 @@ exports.signup = async (req, res) => {
   try {
     const user = await User.findOne({ email })
 
-    if (user) throw Error("User with that e-mail already exists")
+    if (user) throw Error("User with that email already exists")
 
     const salt = await bcrypt.genSalt(10)
     if (!salt) throw Error("Something critical happened 51000")

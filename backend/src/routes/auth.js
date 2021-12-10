@@ -9,7 +9,7 @@ router.post(
     check("email")
       .isEmail()
       .normalizeEmail()
-      .withMessage("Must be correctly formatted e-mail"),
+      .withMessage("Must be correctly formatted email"),
     check("password")
       .isLength({ min: 6 })
       .withMessage("Must be at least 6 characters long"),
@@ -36,7 +36,7 @@ router.post(
     check("email")
       .isEmail()
       .normalizeEmail()
-      .withMessage("Must be correctly formatted e-mail"),
+      .withMessage("Must be correctly formatted email"),
     check("password")
       .isLength({ min: 6 })
       .withMessage("Must be at least 6 characters long"),

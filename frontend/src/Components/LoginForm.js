@@ -43,7 +43,7 @@ function LoginForm(){
     return(
         <div>
             <Form form={form} onFinish={handleLoginForm} autoComplete='off' labelCol={{ span: 10 }} wrapperCol={{ span: 5 }}>
-                <Form.Item label='E-mail' name='email' rules={[{ required: true, message:'Please insert E-mail'}]}>
+                <Form.Item label='Email' name='email' rules={[{ required: true, message:'Please insert email'}]}>
                     <Input />
                 </Form.Item>
                 <Form.Item label='Password' name='password' rules={[{ required: true, message:'Please insert password'}]}>

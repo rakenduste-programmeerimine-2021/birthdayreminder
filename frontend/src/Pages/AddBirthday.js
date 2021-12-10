@@ -6,6 +6,7 @@ import HeaderLoggedIn from "../Components/HeaderLoggedIn"
 import AddBirthdayForm from "../Components/AddBirthdayForm"
 import { Typography } from 'antd'
 import { withRouter } from "react-router"
+import './AddBirthday.css'
 
 const { Title } = Typography
 
@@ -26,9 +27,9 @@ function AddBirthday(){
     }
 
     return(
-        <div style={{ textAlign: 'center' }}>
+        <div className='add-birthday-page-main-content'>
             <HeaderLoggedIn />
-            <Title style={{ marginTop: '50px' }}>Add a birthday</Title>
+            <Title level={2} className='add-birthday-page-title'>Add a birthday</Title>
             <AddBirthdayForm addNewBirthday={addNewBirthday} />
         </div>
     )

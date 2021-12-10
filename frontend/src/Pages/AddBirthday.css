@@ -1,0 +1,13 @@
+.add-birthday-page-main-content {
+  text-align: center;
+}
+
+.add-birthday-page-title {
+  margin: 50px;
+}
+
+@media screen and (max-width: 600px) {
+  .add-birthday-page-title {
+    margin: 20px
+  }
+}

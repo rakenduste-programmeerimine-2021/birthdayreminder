@@ -35,19 +35,19 @@ function SignupForm({ addNewUserToDB }){
    return(
     <div style={{textAlign: 'center'}}>
         <Form form={form} autoComplete='off' labelCol={{ span: 10 }} wrapperCol={{ span: 5 }} onFinish={handleSignupForm}>
-            <Form.Item label='Firstname' name='firstname' rules={[{ required: true, message:'Please insert firstname'}]}>
+            <Form.Item label='First name' name='firstname' rules={[{ required: true, message:'Please insert first name'}]}>
                 <Input />
             </Form.Item>
-            <Form.Item label='Lastname' name='lastname' rules={[{ required: true, message:'Please insert lastname'}]}>
+            <Form.Item label='Last name' name='lastname' rules={[{ required: true, message:'Please insert last name'}]}>
                 <Input />
             </Form.Item>
-            <Form.Item label='E-mail' name='email' rules={[{ required: true, type:'email', message:'Please insert correct E-mail'}]}>
+            <Form.Item label='Email' name='email' rules={[{ required: true, type:'email', message:'Please insert correct email'}]}>
                 <Input />
             </Form.Item>
             <Form.Item label='Password' name='password' rules={[{ required: true, message:'Please insert password'}]}>
                 <Input.Password />
             </Form.Item>
-            <Form.Item label='Password again' name='confirmPassword' rules={[{ required: true, message:'Please insert password again'}]}>
+            <Form.Item label='Confirm password' name='confirmPassword' rules={[{ required: true, message:'Please insert confirm password'}]}>
                 <Input.Password />
             </Form.Item>
             <Form.Item wrapperCol={{ offset: 9, span: 6 }}>
