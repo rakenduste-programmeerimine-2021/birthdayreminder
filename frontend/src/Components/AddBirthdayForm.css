@@ -1,0 +1,17 @@
+.add-birthday-column {
+  max-width: 450px;
+}
+
+.add-birthday-input-field {
+  border-radius: 10px;
+}
+
+.add-birthday-date-field {
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.birthday-submit-button {
+  border-radius: 10px;
+}
