@@ -1,15 +1,21 @@
-import { Button, Input, Table } from 'antd'
+import { Button, Input, Table, Popconfirm, notification, Modal, Form, DatePicker } from 'antd'
 import { DeleteOutlined, EditOutlined, SearchOutlined, CloseOutlined } from '@ant-design/icons'
-import { Popconfirm, notification } from 'antd'
 import { withRouter } from "react-router"
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Context } from '../store'
 import axios from 'axios'
-import { deleteBirthday } from '../store/actions'
+import { deleteBirthday, editBirthday } from '../store/actions'
 import './AllBirthdaysTable.css'
 
 function AllBirthdaysTable(){
     const [ state, dispatch ] = useContext(Context)
+    const [ modalVisible, setModalVisible ] = useState(false)
+    const [ editingBirthday, setEditingBirthday ] = useState('')
+    const [ form ] = Form.useForm()
+    let dateToday = new Date()
+    let yearToday = dateToday.getFullYear() 
+    let monthToday = dateToday.getMonth()+1
+    let dayToday = dateToday.getDate()
     const token = state.auth.token
 
     const columns = [
@@ -132,7 +138,7 @@ function AllBirthdaysTable(){
             fixed: 'right',
             align: 'center',
             render: (e) => (
-                <EditOutlined className='edit-button' />
+                <EditOutlined className='edit-button' onClick={() => handleEdit(e._id)} /> 
             )
         }
     ]
@@ -147,6 +153,75 @@ function AllBirthdaysTable(){
         dispatch(deleteBirthday(response.data)) 
     }
 
+    const handleCancel = () => {
+        form.resetFields()
+        setEditingBirthday('')
+        setModalVisible(false)
+    }
+
+    const handleEdit = (id) => {
+        let bdayForEdit = (state.birthdays.data.filter(birthday => birthday._id === id))[0]
+        setEditingBirthday(bdayForEdit)
+        setModalVisible(true)
+    }
+
+    const saveUpdates = async (values) => {
+        let formatedBday, bdayUpdated
+
+        if(values['birthday']){
+            formatedBday = values['birthday'].format('DD-MM-YYYY')
+            console.log(formatedBday)
+            bdayUpdated = {
+                firstName: values.firstname,
+                lastName: values.lastname,
+                birthDay: formatedBday
+            }
+        } else {
+            bdayUpdated = {
+                firstName: values.firstname,
+                lastName: values.lastname
+            }
+        }
+
+        try {
+            const res = await axios.put(`http://localhost:8082/api/bday/update-birthday/${editingBirthday._id}`, bdayUpdated, { 
+                headers: {
+                    'Authorization':`Bearer ${token}`
+                }
+            })
+
+            let newBirthday = res.data
+            let day, month, year, age
+            let fullDate = newBirthday.birthDay.split('-')
+            day = parseInt(fullDate[0])
+            month = parseInt(fullDate[1])
+            year = parseInt(fullDate[2])
+            age = yearToday - year
+            if(month >= monthToday){
+                if(day > dayToday){
+                    age -=1
+                }
+            }
+            newBirthday['age'] = age
+
+            dispatch(editBirthday(newBirthday))
+
+            notification.success({
+                message:'Birthday updated!'
+            })
+
+            form.resetFields()
+            setEditingBirthday('')
+            setModalVisible(false)
+
+        } catch (error) {
+            console.log(error)
+            notification.error({
+                message:'Something went wrong...'
+            })
+        } 
+    }
+
     return(
         <>
             <Table
@@ -159,6 +234,36 @@ function AllBirthdaysTable(){
                 showSorterTooltip={false}
                 size="middle"
             />
+
+            <Modal 
+                title="Edit birthday" 
+                visible={modalVisible} 
+                footer={null}
+                closable={false}
+            >
+                <Form autoComplete='off' onFinish={saveUpdates} form={form}>
+                    <Form.Item label='First name' name='firstname'>
+                        <Input defaultValue={editingBirthday?.firstName}/>
+                    </Form.Item>
+                    <Form.Item label='Last name' name='lastname' >
+                        <Input defaultValue={editingBirthday?.lastName}/>
+                    </Form.Item>
+                    <Form.Item label='Birthday' name='birthday' >
+                        <DatePicker />
+                    </Form.Item>
+                    <Form.Item>
+                        <Button type='primary' htmlType='submit'>
+                            Save changes
+                        </Button>
+                    </Form.Item>
+                    <Form.Item>
+                        <Button onClick={handleCancel}>
+                            Cancel
+                        </Button>
+                    </Form.Item>
+                </Form>
+                
+            </Modal>
         </>
     )
 }
