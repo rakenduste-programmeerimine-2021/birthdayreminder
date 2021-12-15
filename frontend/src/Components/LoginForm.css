@@ -1,0 +1,7 @@
+.login-column {
+  max-width: 450px;
+}
+
+.login-form-input-field, .login-form-submit-button {
+  border-radius: 10px;
+}

@@ -1,9 +1,10 @@
-import { Form, Input, Button, notification } from 'antd';
+import { Form, Input, Button, notification, Row, Col } from 'antd';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { useContext } from "react";
 import { Context } from "../store";
 import { loginUser } from "../store/actions";
+import './LoginForm.css'
 
 function LoginForm(){
     const [ , dispatch ] = useContext(Context);
@@ -41,21 +42,59 @@ function LoginForm(){
     }
 
     return(
-        <div>
-            <Form form={form} onFinish={handleLoginForm} autoComplete='off' labelCol={{ span: 10 }} wrapperCol={{ span: 5 }}>
-                <Form.Item label='Email' name='email' rules={[{ required: true, message:'Please insert email'}]}>
-                    <Input />
-                </Form.Item>
-                <Form.Item label='Password' name='password' rules={[{ required: true, message:'Please insert password'}]}>
-                    <Input.Password />
-                </Form.Item>
-                <Form.Item wrapperCol={{ offset: 9, span: 6 }}>
-                    <Button type="primary" htmlType="submit">
-                        Log in
-                    </Button>
-                </Form.Item>
-            </Form>
-        </div>
+        <>
+            <Row type='flex' align='center'>
+                <Col xs={22} className='login-column'>
+                    <Form 
+                        form={form} 
+                        onFinish={handleLoginForm} 
+                        autoComplete='off' 
+                        labelCol={{ span: 5 }} 
+                        // layout='vertical'
+                        >
+                        <Form.Item 
+                            label='Email' 
+                            name='email' 
+                            className='login-form-row'
+                            rules={[
+                                { 
+                                    required: true, 
+                                    message:'Please insert email'
+                                }
+                            ]}
+                            >
+                            <Input 
+                                className='login-form-input-field'
+                                autoFocus
+                            />
+                        </Form.Item>
+
+                        <Form.Item 
+                            label='Password' 
+                            name='password' 
+                            rules={[
+                                { 
+                                    required: true, 
+                                    message:'Please insert password'
+                                }
+                            ]}
+                            >
+                            <Input.Password className='login-form-input-field' />
+                        </Form.Item>
+
+                        <Form.Item>
+                            <Button 
+                                type="primary" 
+                                htmlType="submit"
+                                className='login-form-submit-button'
+                                >
+                                Log in
+                            </Button>
+                        </Form.Item>
+                    </Form>
+                </Col>
+            </Row>
+        </>
     )
 }
 
