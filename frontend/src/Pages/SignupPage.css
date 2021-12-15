@@ -1,0 +1,13 @@
+.signup-page-main-content {
+  text-align: center;
+}
+
+.signup-page-title {
+  margin-top: 50px;
+}
+
+@media screen and (max-width: 600px) {
+  .signup-page-title {
+    margin: 20px
+  }
+}
