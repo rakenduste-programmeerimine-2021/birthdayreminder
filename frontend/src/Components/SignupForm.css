@@ -1,0 +1,8 @@
+
+.signup-column {
+  max-width: 450px;
+}
+
+.signup-form-input-field, .signup-form-submit-button {
+  border-radius: 10px;
+}

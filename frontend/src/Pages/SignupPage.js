@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import SignupForm from "../Components/SignupForm"
 import { Typography } from 'antd'
 import Header from "../Components/Header"
+import './SignupPage.css'
 const { Title } = Typography
 
 function SignupPage(){
@@ -16,9 +17,9 @@ function SignupPage(){
     }
 
     return(
-        <div style={{ textAlign: 'center' }}>
+        <div className='signup-page-main-content'>
             <Header />
-            <Title style={{ marginTop: '50px' }}>Sign up!</Title>
+            <Title level={2} className='signup-page-title'>Sign up!</Title>
             <SignupForm addNewUserToDB={addNewUserToDB}/>
         </div>  
     )
