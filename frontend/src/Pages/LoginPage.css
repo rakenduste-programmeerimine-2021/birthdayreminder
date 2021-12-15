@@ -1,0 +1,13 @@
+.login-page-main-content {
+  text-align: center;
+}
+
+.login-page-title {
+  margin-top: 50px;
+}
+
+@media screen and (max-width: 600px) {
+  .login-page-title {
+    margin: 20px
+  }
+}
