@@ -1,6 +1,5 @@
 import { Button, Input, Table, Popconfirm, notification, Modal, Form, DatePicker } from 'antd'
 import { DeleteOutlined, EditOutlined, SearchOutlined, CloseOutlined } from '@ant-design/icons'
-import { withRouter } from "react-router"
 import { useContext, useState } from 'react'
 import { Context } from '../store'
 import axios from 'axios'
@@ -268,4 +267,4 @@ function AllBirthdaysTable(){
     )
 }
 
-export default withRouter(AllBirthdaysTable)
+export default AllBirthdaysTable
