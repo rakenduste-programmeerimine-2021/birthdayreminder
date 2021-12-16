@@ -1,4 +1,4 @@
-import AllBirthdaysTable from './AllBirthdaysTable'
+import AllBirthdaysTable from '../Components/AllBirthdaysTable'
 
 it('checks if all birthdays table renders', () => {
     const component = <AllBirthdaysTable shouldRender />
