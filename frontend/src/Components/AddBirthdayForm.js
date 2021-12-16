@@ -48,7 +48,13 @@ function AddBirthdayForm({ addNewBirthday }){
                             rules={[
                                 { 
                                     required: true,
+                                    type: 'string',
+                                    whitespace: true,                                    
                                     message:'Please insert first name'
+                                },
+                                {
+                                    min: 2,
+                                    message: 'First name is too short'
                                 }
                             ]}
                             >
@@ -64,7 +70,13 @@ function AddBirthdayForm({ addNewBirthday }){
                             rules={[
                                 { 
                                     required: true, 
+                                    type: 'string',
+                                    whitespace: true,
                                     message:'Please insert last name'
+                                },
+                                {
+                                    min: 3,
+                                    message: 'Last name is too short'
                                 }
                             ]}
                             >
