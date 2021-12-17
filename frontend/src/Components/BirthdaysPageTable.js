@@ -1,11 +1,14 @@
-import { Table } from 'antd'
+import { Table, Popconfirm, notification } from 'antd'
+import { BellOutlined } from '@ant-design/icons'
 import { useContext, useState, useEffect } from 'react'
 import { Context } from '../store'
+import axios from 'axios'
 import './BirthdaysPageTable.css'
 
 function BirthdaysPageTable(){
    const [ state, ] = useContext(Context)
    const [ todaysBirthdays, setTodaysBirthdays ] = useState([])
+   const token = state.auth.token
    let dateToday = new Date()
    let monthToday = dateToday.getMonth()+1 //+1 because the return values are 0-11
    let dayToday = dateToday.getDate()
@@ -56,7 +59,38 @@ function BirthdaysPageTable(){
             key: 'age',
             width: 50,
         },
+        {
+            title: 'Send email',
+            width: 50,
+            fixed: 'right',
+            align: 'center',
+            render: (e) => (
+                <Popconfirm
+                    title='Send Email?'
+                    onConfirm={() => handleSendEmail(e._id)}
+                >
+                    <BellOutlined  />
+                </Popconfirm>
+            )
+        }
     ]
+
+    const handleSendEmail = async (id) => {
+        try{
+            await axios.get(`http://localhost:8082/api/bday/send-congrats/${id}`, {
+                headers: {
+                    'Authorization':`Bearer ${token}`
+                }
+            })
+            notification.success({
+                message: 'Email sent!'
+            })
+        } catch (error) {
+            notification.error({
+                message: 'Something went wrong...'
+            })
+        }
+    }
 
 
     return(
