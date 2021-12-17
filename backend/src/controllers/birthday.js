@@ -1,7 +1,8 @@
 const Birthday = require('../models/Birthday')
+const nodemailer = require('../nodemailer')
 
 exports.addBirthday = async (req, res) => {
-    const { firstName, lastName, birthDay } = req.body
+    const { firstName, lastName, birthDay, email } = req.body
     
     // To make a bigger use of the jwt ... I'll take createdBy data from it
     // Actually, jwt has already been verified. And the user info in it has been decoded.
@@ -15,6 +16,7 @@ exports.addBirthday = async (req, res) => {
             firstName,
             lastName,
             birthDay,
+            email,
             createdBy: id
         })
 
@@ -58,4 +60,14 @@ exports.updateBirthday = async (req, res) => {
     if(!birthday) res.status(404).send('This birthday was not found!')
 
     res.status(200).send(birthday)
+}
+
+exports.sendBdayCongrats = async (req, res) => {
+    const { id } = req.params
+    const bday = await Birthday.findOne({ _id: id})
+    if(!bday) res.status(404).send('Birthday not found...')
+
+    nodemailer.sendCongratsEmail(bday.firstName, bday.lastName, bday.email, req.user.firstName, req.user.lastName)
+    res.status(200).send(bday)
+    //todo - meili saatmise loogika
 }

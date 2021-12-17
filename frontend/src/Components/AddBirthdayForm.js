@@ -14,6 +14,7 @@ function AddBirthdayForm({ addNewBirthday }){
         const newBirthday = {
             firstName: values.firstname,
             lastName: values.lastname,
+            email: values.email,
             birthDay: birthday
         }
 
@@ -77,6 +78,19 @@ function AddBirthdayForm({ addNewBirthday }){
                                 {
                                     min: 3,
                                     message: 'Last name is too short'
+                                }
+                            ]}
+                            >
+                            <Input className='add-birthday-input-field'/>
+                        </Form.Item>
+
+                        <Form.Item 
+                            label='Email' 
+                            name='email' 
+                            rules={[
+                                { 
+                                    required: true, 
+                                    message:'Please insert email'
                                 }
                             ]}
                             >
