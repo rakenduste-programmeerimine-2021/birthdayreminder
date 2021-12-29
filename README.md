@@ -28,7 +28,6 @@ https://app.uizard.io/p/98598791
 * Kasutaja saab lisada / kustutada / muuta juba sisestatud andmeid
 * NB! Kasutaja näeb vaid enda poolt sisestatud andmeid
 * Kasutaja saab emaili peale meeldetuletuse, kui sõbra sünnipäev on kätte jõudnud
-> **Märkus:** Meeldetuletuste emaili teel edastamise kohta peame veel uurima.
 
 <br />
 
