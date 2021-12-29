@@ -69,5 +69,4 @@ exports.sendBdayCongrats = async (req, res) => {
 
     nodemailer.sendCongratsEmail(bday.firstName, bday.lastName, bday.email, req.user.firstName, req.user.lastName)
     res.status(200).send(bday)
-    //todo - meili saatmise loogika
 }
