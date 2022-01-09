@@ -1,5 +1,5 @@
 import { Button, Input, Table, Popconfirm, notification, Modal, Form, DatePicker } from 'antd'
-import { DeleteOutlined, EditOutlined, SearchOutlined, CloseOutlined } from '@ant-design/icons'
+import { DeleteOutlined, EditOutlined, SearchOutlined, CloseOutlined, QuestionCircleOutlined } from '@ant-design/icons'
 import { useContext, useState } from 'react'
 import { Context } from '../store'
 import axios from 'axios'
@@ -124,7 +124,11 @@ function AllBirthdaysTable(){
             align: 'center',
             render: (e) => (
                 <Popconfirm
+                    icon={<QuestionCircleOutlined className='questionmark'/>}
                     title='Are you sure?'
+                    cancelButtonProps={{ className: 'popup-button' }}
+                    okButtonProps={{ className: 'popup-button' }}
+                    okText='Yes'
                     onConfirm={() => handleDelete(e._id)}
                     >
                     <DeleteOutlined className='delete-button' />
@@ -159,6 +163,7 @@ function AllBirthdaysTable(){
     }
 
     const handleEdit = (id) => {
+        form.resetFields()
         let bdayForEdit = (state.birthdays.data.filter(birthday => birthday._id === id))[0]
         setEditingBirthday(bdayForEdit)
         setModalVisible(true)
@@ -240,26 +245,59 @@ function AllBirthdaysTable(){
                 footer={null}
                 closable={false}
             >
-                <Form autoComplete='off' onFinish={saveUpdates} form={form}>
-                    <Form.Item label='First name' name='firstname'>
-                        <Input defaultValue={editingBirthday?.firstName}/>
+                <Form 
+                    form={form} 
+                    autoComplete='off' 
+                    onFinish={saveUpdates} 
+                    labelCol={{ span: 4 }}
+                    >
+                    <Form.Item 
+                        label='First name' 
+                        name='firstname'
+                        >
+                        <Input 
+                            defaultValue={editingBirthday?.firstName} 
+                            className='edit-birthday-input-field'
+                        />
                     </Form.Item>
-                    <Form.Item label='Last name' name='lastname' >
-                        <Input defaultValue={editingBirthday?.lastName}/>
+
+                    <Form.Item 
+                        label='Last name' 
+                        name='lastname' 
+                        >
+                        <Input 
+                            defaultValue={editingBirthday?.lastName}
+                            className='edit-birthday-input-field'
+                        />
                     </Form.Item>
-                    <Form.Item label='Birthday' name='birthday' >
-                        <DatePicker />
+
+                    <Form.Item 
+                        label='Birthday' 
+                        name='birthday' 
+                        >
+                        <DatePicker className='edit-birthday-date-field' />
                     </Form.Item>
-                    <Form.Item>
-                        <Button type='primary' htmlType='submit'>
-                            Save changes
-                        </Button>
-                    </Form.Item>
-                    <Form.Item>
-                        <Button onClick={handleCancel}>
-                            Cancel
-                        </Button>
-                    </Form.Item>
+
+                    <div className='edit-birthday-button-container'>
+                        <Form.Item>
+                            <Button 
+                                type='primary' 
+                                htmlType='submit'
+                                className='edit-birthday-save-button'
+                                >
+                                Save changes
+                            </Button>
+                        </Form.Item>
+                        
+                        <Form.Item>
+                            <Button 
+                                onClick={handleCancel}
+                                className='edit-birthday-cancel-button'
+                                >
+                                Cancel editing
+                            </Button>
+                        </Form.Item>
+                    </div>
                 </Form>
                 
             </Modal>

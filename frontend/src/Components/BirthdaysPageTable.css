@@ -9,6 +9,14 @@
   color: #fff;
 }
 
+.questionmark-icon {
+  color: red !important;
+}
+
+.cancel-popup-button, .ok-popup-button {
+  border-radius: 10px;
+}
+
 @media screen and (max-width: 600px) {
   .todays-birthdays-table {
     width: 100vw;
