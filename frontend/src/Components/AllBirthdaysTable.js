@@ -195,16 +195,15 @@ function AllBirthdaysTable(){
             })
 
             let newBirthday = res.data
-            let day, month, year, age
+            let day, month, year, age, calMonthsDif
             let fullDate = newBirthday.birthDay.split('-')
             day = parseInt(fullDate[0])
             month = parseInt(fullDate[1])
             year = parseInt(fullDate[2])
             age = yearToday - year
-            if(month >= monthToday){
-                if(day > dayToday){
-                    age -=1
-                }
+            calMonthsDif = monthToday - month
+            if(calMonthsDif < 0 || (calMonthsDif === 0 && day > dayToday)){
+                age -=1
             }
             newBirthday['age'] = age
 
