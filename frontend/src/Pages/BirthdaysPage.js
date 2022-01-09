@@ -31,16 +31,15 @@ function BirthdaysPage(){
         let Allbirthdays = response.data
         let fullDate
         Allbirthdays.forEach(element => {
-            let day, month, year, age
+            let day, month, year, age, calMonthsDif
             fullDate = element.birthDay.split('-')
             day = parseInt(fullDate[0])
             month = parseInt(fullDate[1])
             year = parseInt(fullDate[2])
             age = yearToday - year
-            if(month >= monthToday){
-                if(day > dayToday){
-                    age -=1
-                }
+            calMonthsDif = monthToday - month
+            if(calMonthsDif < 0 || (calMonthsDif === 0 && day > dayToday)){
+                age -=1
             }
             element['age'] = age
         })
