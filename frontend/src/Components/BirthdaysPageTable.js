@@ -1,5 +1,5 @@
 import { Table, Popconfirm, notification } from 'antd'
-import { BellOutlined } from '@ant-design/icons'
+import { MailOutlined, QuestionCircleOutlined } from '@ant-design/icons'
 import { useContext, useState, useEffect } from 'react'
 import { Context } from '../store'
 import axios from 'axios'
@@ -66,10 +66,13 @@ function BirthdaysPageTable(){
             align: 'center',
             render: (e) => (
                 <Popconfirm
+                    icon={<QuestionCircleOutlined className='questionmark-icon'/>}
                     title='Send Email?'
+                    cancelButtonProps={{ className: 'cancel-popup-button' }}
+                    okButtonProps={{ className: 'ok-popup-button' }}
                     onConfirm={() => handleSendEmail(e._id)}
                 >
-                    <BellOutlined  />
+                    <MailOutlined />
                 </Popconfirm>
             )
         }

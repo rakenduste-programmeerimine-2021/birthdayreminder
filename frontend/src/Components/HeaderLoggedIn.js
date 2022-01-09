@@ -65,7 +65,7 @@ function HeaderLoggedIn(){
 
           <Menu.Item key='logout'>
             <Link to='/' onClick={handleLogOut}>
-              Log out <LogoutOutlined/>
+              <LogoutOutlined/>
             </Link>
           </Menu.Item>
         </Menu>

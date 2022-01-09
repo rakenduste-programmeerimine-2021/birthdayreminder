@@ -18,6 +18,14 @@
   cursor: pointer;
 }
 
+.questionmark {
+  color: red !important;
+}
+
+.popup-button {
+  border-radius: 10px;
+}
+
 .all-birthdays-search-field {
   width: 120px;
 }
@@ -34,4 +42,34 @@
   .all-birthdays-table {
     width: 100vw;
   }
+}
+
+
+
+/* edit birthday modal */
+.ant-modal-title {
+  text-align: center;
+}
+
+.edit-birthday-input-field {
+  border-radius: 10px;
+}
+
+.edit-birthday-date-field {
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.edit-birthday-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.edit-birthday-cancel-button {
+  margin-left: 10px;
+}
+
+.edit-birthday-cancel-button, .edit-birthday-save-button {
+  border-radius: 10px;
 }
