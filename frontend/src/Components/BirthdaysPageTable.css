@@ -9,6 +9,10 @@
   color: #fff;
 }
 
+.send-mail-button {
+  color: #596886;
+}
+
 .questionmark-icon {
   color: red !important;
 }

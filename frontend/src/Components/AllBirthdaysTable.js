@@ -2,6 +2,7 @@ import { Button, Input, Table, Popconfirm, notification, Modal, Form, DatePicker
 import { DeleteOutlined, EditOutlined, SearchOutlined, CloseOutlined, QuestionCircleOutlined } from '@ant-design/icons'
 import { useContext, useState } from 'react'
 import { Context } from '../store'
+import moment from 'moment'
 import axios from 'axios'
 import { deleteBirthday, editBirthday } from '../store/actions'
 import './AllBirthdaysTable.css'
@@ -178,12 +179,14 @@ function AllBirthdaysTable(){
             bdayUpdated = {
                 firstName: values.firstname,
                 lastName: values.lastname,
+                email: values.email,
                 birthDay: formatedBday
             }
         } else {
             bdayUpdated = {
                 firstName: values.firstname,
-                lastName: values.lastname
+                lastName: values.lastname,
+                email: values.email
             }
         }
 
@@ -243,6 +246,7 @@ function AllBirthdaysTable(){
                 visible={modalVisible} 
                 footer={null}
                 closable={false}
+                centered
             >
                 <Form 
                     form={form} 
@@ -270,11 +274,25 @@ function AllBirthdaysTable(){
                         />
                     </Form.Item>
 
+                    <Form.Item
+                        label='Email'
+                        name='email'
+                        >
+                        <Input 
+                            defaultValue={editingBirthday?.email}
+                            className='edit-birthday-input-field'
+                        />
+                    </Form.Item>
+
                     <Form.Item 
                         label='Birthday' 
                         name='birthday' 
                         >
-                        <DatePicker className='edit-birthday-date-field' />
+                        <DatePicker 
+                            defaultValue={moment(editingBirthday?.birthDay, 'DD-MM-YYYY')}
+                            format={'DD-MM-YYYY'}
+                            className='edit-birthday-date-field' 
+                        />
                     </Form.Item>
 
                     <div className='edit-birthday-button-container'>

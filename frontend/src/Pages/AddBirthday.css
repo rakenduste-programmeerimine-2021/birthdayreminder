@@ -4,6 +4,7 @@
 
 .add-birthday-page-title {
   margin: 50px;
+  color: #3b4966 !important;
 }
 
 @media screen and (max-width: 600px) {
