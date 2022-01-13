@@ -57,12 +57,13 @@ function UpcomingBirthdaysTable(){
             title: 'Birthday',
             dataIndex: 'birthDay',
             key: 'birthDay',
+            width: 90,
         },
         {
             title: 'Age',
             dataIndex: 'age',
             key: 'age',
-            width: 50,
+            width: 40,
             // I commented it out...so we can test if this version is better
             // fixed: 'right',
         },
@@ -76,7 +77,7 @@ function UpcomingBirthdaysTable(){
                 columns={columns}
                 rowKey='_id'
                 dataSource={upcomingBdays}
-                scroll={{ x: 450 }}
+                // scroll={{ x: 450 }}
                 bordered
                 pagination={false} 
                 showSorterTooltip={false}

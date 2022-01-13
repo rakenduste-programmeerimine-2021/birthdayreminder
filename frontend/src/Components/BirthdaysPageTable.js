@@ -72,7 +72,7 @@ function BirthdaysPageTable(){
                     okButtonProps={{ className: 'ok-popup-button' }}
                     onConfirm={() => handleSendEmail(e._id)}
                 >
-                    <MailOutlined />
+                    {e.email ? <MailOutlined className='send-mail-button' /> : ""}
                 </Popconfirm>
             )
         }

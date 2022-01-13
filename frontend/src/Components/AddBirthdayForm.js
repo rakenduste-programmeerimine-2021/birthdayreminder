@@ -89,8 +89,8 @@ function AddBirthdayForm({ addNewBirthday }){
                             name='email' 
                             rules={[
                                 { 
-                                    required: true, 
-                                    message:'Please insert email'
+                                    type:'email',
+                                    message:'Please insert correct email'
                                 }
                             ]}
                             >

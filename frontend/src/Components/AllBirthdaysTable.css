@@ -47,6 +47,10 @@
 
 
 /* edit birthday modal */
+.ant-modal-body, .ant-modal-header {
+  background-color: #F0F2F5;
+}
+
 .ant-modal-title {
   text-align: center;
 }
