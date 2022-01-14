@@ -5,8 +5,7 @@ import { Context } from '../store'
 describe('Error page test', () => {
     const context = {
         'birthdays':[],
-        'auth':null,
-
+        'auth':null
     }
     const dispatch = jest.fn
 
