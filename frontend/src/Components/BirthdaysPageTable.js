@@ -1,5 +1,5 @@
-import { Table, Popconfirm, notification } from 'antd'
-import { MailOutlined, QuestionCircleOutlined } from '@ant-design/icons'
+import { Table, notification, Modal, Form, Input, Button } from 'antd'
+import { MailOutlined } from '@ant-design/icons'
 import { useContext, useState, useEffect } from 'react'
 import { Context } from '../store'
 import axios from 'axios'
@@ -7,6 +7,11 @@ import './BirthdaysPageTable.css'
 
 function BirthdaysPageTable(){
    const [ state, ] = useContext(Context)
+   const [ isModalVisible, setIsModalVisible ] = useState(false)
+   const [ recipientId, setRecipientId ] = useState("")
+   const [ subject, setSubject ] = useState("")
+   const [ emailBody, setEmailBody ] = useState("")
+   const [ form ] = Form.useForm()
    const [ todaysBirthdays, setTodaysBirthdays ] = useState([])
    const token = state.auth.token
    let dateToday = new Date()
@@ -65,30 +70,47 @@ function BirthdaysPageTable(){
             fixed: 'right',
             align: 'center',
             render: (e) => (
-                <Popconfirm
-                    icon={<QuestionCircleOutlined className='questionmark-icon'/>}
-                    title='Send Email?'
-                    cancelButtonProps={{ className: 'cancel-popup-button' }}
-                    okButtonProps={{ className: 'ok-popup-button' }}
-                    onConfirm={() => handleSendEmail(e._id)}
-                >
-                    {e.email ? <MailOutlined className='send-mail-button' /> : ""}
-                </Popconfirm>
+                e.email ? (<MailOutlined 
+                    className='send-mail-button' 
+                    onClick={() => handleShowModal(e._id)} />) : ""
             )
         }
     ]
 
-    const handleSendEmail = async (id) => {
+    const handleShowModal = (id) => {
+        setRecipientId(id)
+        setIsModalVisible(true)
+    }
+
+    const handleCancel = () => {
+        form.resetFields()
+        setSubject("")
+        setEmailBody("")
+        setRecipientId("")
+        setIsModalVisible(false)
+    }
+
+    const handleSendEmail = async (values) => {
+        let mailInformation = {
+            subject: subject,
+            emailBody: emailBody
+        }
+
         try{
-            await axios.get(`http://localhost:8082/api/bday/send-congrats/${id}`, {
+            const res = await axios.post(`http://localhost:8082/api/bday/send-congrats/${recipientId}`, mailInformation, {
                 headers: {
                     'Authorization':`Bearer ${token}`
                 }
             })
+
             notification.success({
-                message: 'Email sent!'
+                message: res.data
             })
+
+            handleCancel()
+
         } catch (error) {
+            console.log(error)
             notification.error({
                 message: 'Something went wrong...'
             })
@@ -108,6 +130,88 @@ function BirthdaysPageTable(){
                 showSorterTooltip={false}
                 size="middle"
             />
+
+            <Modal
+                title='Send an email'
+                visible={isModalVisible}
+                footer={null}
+                closable={false}
+                centered
+                >
+                <Form
+                    form={form} 
+                    autoComplete='off' 
+                    onFinish={handleSendEmail} 
+                    labelCol={{ span: 4 }}
+                    >
+                    <Form.Item
+                        label='Subject'
+                        name='subject'
+                        rules={[
+                            { 
+                                required: true,
+                                type: 'string',
+                                whitespace: true,
+                                message:'Please insert subject'
+                            }
+                        ]}
+                        >
+                        <Input
+                            value={subject}
+                            onChange={(e) => setSubject(e.target.value)}
+                            autoFocus
+                        />
+                    </Form.Item>
+
+                    <Form.Item
+                        label='Body'
+                        name='emailBody'
+                        rules={[
+                            { 
+                                required: true,
+                                type: 'string',
+                                whitespace: true,
+                                message:'Please insert email body'
+                            },
+                            {
+                                max: 2000,
+                                message: 'Email message is too long'
+                            }
+                        ]}
+                        >
+                        <Input.TextArea 
+                            showCount={true}
+                            maxLength={2000}
+                            autoSize={{
+                                minRows: 2
+                            }}
+                            value={emailBody}
+                            onChange={(e) => setEmailBody(e.target.value)}
+                        />
+                    </Form.Item>
+
+                    <div className='send-email-button-container'>
+                        <Form.Item>
+                            <Button
+                                type='primary'
+                                htmlType='sumit'
+                                className='send-email-save-button'
+                                >
+                                Send email
+                            </Button>
+                        </Form.Item>
+
+                        <Form.Item>
+                            <Button
+                                onClick={handleCancel}
+                                className='send-email-cancel-button'
+                                >
+                                Cancel
+                            </Button>
+                        </Form.Item>
+                    </div>
+                </Form>
+            </Modal>
         </>
     )
 }

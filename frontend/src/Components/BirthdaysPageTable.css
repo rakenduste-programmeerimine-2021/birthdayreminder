@@ -11,18 +11,38 @@
 
 .send-mail-button {
   color: #596886;
-}
-
-.questionmark-icon {
-  color: red !important;
-}
-
-.cancel-popup-button, .ok-popup-button {
-  border-radius: 10px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 600px) {
   .todays-birthdays-table {
     width: 100vw;
+  }
+}
+
+
+
+/* send email modal */
+.send-email-input-field {
+  border-radius: 10px;
+}
+
+.send-email-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.send-email-cancel-button {
+  margin-left: 10px;
+}
+
+.send-email-cancel-button, .send-email-save-button {
+  border-radius: 10px;
+  align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+  .send-email-button-container {
+    margin-top: 40px;
   }
 }
