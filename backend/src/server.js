@@ -37,8 +37,8 @@ app.get('*', (req, res) => {
 cron.schedule('0 6 * * *', async () => {
   const today = new Date()
   console.log('\nThe new cron job...Server time is: ' + today)
-  const todaysDay = today.getDate()
-  const todaysMonth = today.getMonth() + 1
+  const todaysDay = today.getDate().toString().padStart(2, '0')
+  const todaysMonth = (today.getMonth() + 1).toString().padStart(2, '0')
   const todaysYear = today.getFullYear()
 
   const todaysDate = `${todaysDay}-${todaysMonth}`
