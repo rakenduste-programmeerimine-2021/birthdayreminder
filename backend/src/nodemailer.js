@@ -9,15 +9,14 @@ const transporter = nodemailer.createTransport({
     }
 })
 
-module.exports.sendCongratsEmail = (firstname, lastname, email, senderFirstname, senderLastname) => {
+// https://stackoverflow.com/questions/58412252/nodemailer-does-not-send-the-text-with-line-breaks
+module.exports.sendCongratsEmail = (recipientEmail, subject, emailBody, firstname, lastname, email) => {
     transporter.sendMail({
-        from: 'infobirthdayreminder@gmail.com',
-        to: email,
-        subject: 'Happy birthday!',
-        html: `<h2>Dear ${firstname} ${lastname}!</h2>
-                <p>Congratulations to you on this wonderful day.
-                Lots of virtual hugs&#10084;<br>
-                Best wishes, ${senderFirstname} ${senderLastname}</p>`
+        from: `${firstname} ${lastname} <infobirthdayreminder@gmail.com>`,
+        to: recipientEmail,
+        subject: subject,
+        replyTo: email,
+        text: emailBody
     }).catch(error => console.log(error))
 }
 

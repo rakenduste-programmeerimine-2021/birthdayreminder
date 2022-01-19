@@ -64,9 +64,19 @@ exports.updateBirthday = async (req, res) => {
 
 exports.sendBdayCongrats = async (req, res) => {
     const { id } = req.params
-    const bday = await Birthday.findOne({ _id: id})
+    const { subject, emailBody } = req.body
+    const bday = await Birthday.findOne({ _id: id })
+    
     if(!bday) res.status(404).send('Birthday not found...')
 
-    nodemailer.sendCongratsEmail(bday.firstName, bday.lastName, bday.email, req.user.firstName, req.user.lastName)
-    res.status(200).send(bday)
+    nodemailer.sendCongratsEmail(
+        bday.email, 
+        subject, 
+        emailBody, 
+        req.user.firstName, 
+        req.user.lastName, 
+        req.user.email
+    )
+
+    res.status(200).send('Email sent!')
 }
