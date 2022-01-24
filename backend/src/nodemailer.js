@@ -4,15 +4,15 @@ require('dotenv').config()
 const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-        user: 'infobirthdayreminder@gmail.com',
-        pass: 'LstimSksRoaMoK999'
+        user: process.env.EMAIL_ADDRESS,
+        pass: process.env.EMAIL_PASSWORD
     }
 })
 
 // https://stackoverflow.com/questions/58412252/nodemailer-does-not-send-the-text-with-line-breaks
 module.exports.sendCongratsEmail = (recipientEmail, subject, emailBody, firstname, lastname, email) => {
     transporter.sendMail({
-        from: `${firstname} ${lastname} <infobirthdayreminder@gmail.com>`,
+        from: `${firstname} ${lastname} <process.env.EMAIL_ADDRESS>`,
         to: recipientEmail,
         subject: subject,
         replyTo: email,
@@ -29,7 +29,7 @@ module.exports.sendTodaysBdaysEmail = (
     age
     ) => {
         transporter.sendMail({
-            from: 'BirthdayReminder <infobirthdayreminder@gmail.com>',
+            from: 'BirthdayReminder <process.env.EMAIL_ADDRESS>',
             to: recipientEmail,
             subject: `Birthday reminder - today is ${firstname}'s birthday`,
             html: `<div style='text-align: center'>
