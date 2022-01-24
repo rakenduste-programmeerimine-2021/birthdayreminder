@@ -62,7 +62,7 @@ https://app.uizard.io/p/98598791
     </strong>
   </summary>
     
-  ![Tutvustus](Readme_file_pics/BirthdayReminderReview.gif)  
+  ![Tutvustus](readme_file_pics/BirthdayReminderReview.gif)  
   
 </details>
 
